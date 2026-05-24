@@ -1,0 +1,30 @@
+{
+  "name": "andiamo-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "andiamo.tech apex — corporate site for Andiamo Tech, Inc. (PBC). Umbrella landing for Academy, Andiamo, Velocity, and Pathfinder.",
+  "scripts": {
+    "dev": "next dev -p 3019",
+    "build": "next build",
+    "start": "next start -p 3019",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "next": "^15.5.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "postmark": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.1"
+  }
+}

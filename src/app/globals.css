@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #050a14;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+@layer utilities {
+  .pill {
+    border-radius: 24px;
+  }
+  .grad-cyan-blue {
+    background-image: linear-gradient(90deg, #06B6D4 0%, #2563EB 100%);
+  }
+  .grad-cyan-blue:hover {
+    background-image: linear-gradient(90deg, #22D3EE 0%, #3B82F6 100%);
+  }
+  .ring-soft {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 20px 40px -20px rgba(6,182,212,0.15);
+  }
+  .hairline {
+    border-color: rgba(255,255,255,0.06);
+  }
+}
