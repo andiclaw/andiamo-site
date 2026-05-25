@@ -1,8 +1,8 @@
 import type { LegalDoc } from '@/components/legal-page';
 import { COMPANY } from './company';
 
-const UPDATED_ISO = '2026-05-23';
-const UPDATED_DISPLAY = 'May 23, 2026';
+const UPDATED_ISO = '2026-05-24';
+const UPDATED_DISPLAY = 'May 24, 2026';
 
 export const PRIVACY: LegalDoc = {
   title: 'Privacy Policy',
@@ -101,6 +101,10 @@ export const COOKIES: LegalDoc = {
     {
       heading: 'What we set',
       body: `Nothing. No first-party cookies. No analytics. No advertising trackers. No social-media embeds that would set cookies.`,
+    },
+    {
+      heading: 'What our hosting sets',
+      body: `This site runs on Microsoft Azure App Service. Azure's load balancer can optionally set a session-affinity cookie (\`ARRAffinity\`) to pin a visitor to a single backend instance. We have explicitly disabled that feature because this site is stateless and does not need it. If you ever inspect this site and find an \`ARRAffinity\` cookie, please email ${COMPANY.helloEmail} — it would mean the setting was re-enabled and this policy is out of date.`,
     },
     {
       heading: 'What our products set',

@@ -24,8 +24,21 @@ export default function HomePage() {
         />
       </div>
 
+      {/* Rideshare-app deflection — most existing andiamo.tech traffic is
+          looking for the Andiamo rideshare/mobility app at app.andiamo.tech.
+          Keep this above the fold so they bounce there in one click. */}
+      <div className="max-w-6xl mx-auto px-6 pt-6">
+        <a
+          href="https://app.andiamo.tech"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5 rounded-pill bg-emerald-500/[0.06] border border-emerald-500/20 text-xs sm:text-sm text-emerald-200 hover:bg-emerald-500/[0.10] hover:border-emerald-500/40 transition-all text-center"
+        >
+          <span className="opacity-80">Looking for the Andiamo rideshare app?</span>
+          <span className="font-semibold text-emerald-300">app.andiamo.tech →</span>
+        </a>
+      </div>
+
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
+      <section className="max-w-6xl mx-auto px-6 pt-12 pb-16 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-pill bg-white/[0.04] border hairline mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400">Delaware Public Benefit Corporation</span>
@@ -87,15 +100,6 @@ export default function HomePage() {
             Read the patent →
           </Link>
         </div>
-      </section>
-
-      {/* Founder note */}
-      <section className="max-w-3xl mx-auto px-6 py-16 text-center">
-        <div className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold mb-3">A note from the founder</div>
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-          “Most software you use is built to extract attention, data, or money. We chartered as a Public Benefit Corporation because we want the legal scaffolding to keep us honest — to build software that works for the person in front of it first, and for the business second.”
-        </p>
-        <div className="text-xs text-slate-500 mt-4">— Brendan McGoffin, Founder</div>
       </section>
 
       {/* CTA strip */}

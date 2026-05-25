@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import type { Product } from '@/lib/products';
+import { PRODUCT_MOCKUP } from '@/lib/product-mockups';
 import { StatusBadge } from './status-badge';
 
 export function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
+  const Mockup = PRODUCT_MOCKUP[product.key];
+
   return (
     <div
       className="relative group rounded-2xl border hairline bg-white/[0.02] p-6 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all overflow-hidden"
@@ -16,7 +19,13 @@ export function ProductCard({ product, compact = false }: { product: Product; co
           <h3 className="text-lg font-bold text-white">{product.name}</h3>
           <StatusBadge status={product.status} />
         </div>
-        <p className="text-sm text-slate-300 leading-relaxed mb-3">{product.tagline}</p>
+        <p className="text-sm text-slate-300 leading-relaxed mb-4">{product.tagline}</p>
+
+        {Mockup && (
+          <div className="mb-4 rounded-xl overflow-hidden border hairline">
+            <Mockup />
+          </div>
+        )}
 
         {!compact && (
           <>
