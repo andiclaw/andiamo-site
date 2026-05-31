@@ -48,8 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-ink-950 text-slate-200">
+        <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
         <script
           type="application/ld+json"
