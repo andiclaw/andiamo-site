@@ -17,7 +17,7 @@ export default async function ReportPage({ searchParams }: SearchParams) {
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
       <header className="mb-8">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold">Report an issue</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Report an issue</span>
         <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mt-2 mb-3">
           One form. We route it.
         </h1>

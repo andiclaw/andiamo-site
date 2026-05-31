@@ -1,43 +1,40 @@
-import { ProductCard } from '@/components/product-card';
-import { PRODUCTS } from '@/lib/products';
+import { ProductShowcase } from '@/components/product-showcase';
+import { PageHeader } from '@/components/page-header';
+import { Reveal } from '@/components/reveal';
 
 export const metadata = { title: 'Products' };
+
+const STATUS_LEGEND = [
+  { label: 'Live', body: 'In production. Pays its own bills.', color: '#22C55E' },
+  { label: 'Beta', body: 'Working software, edges still rough.', color: '#F59E0B' },
+  { label: 'Building', body: 'In active development. No public ETA.', color: '#3B82F6' },
+  { label: 'Coming soon', body: 'Scoped. Waiting on a green light.', color: '#94A3B8' },
+];
 
 export default function ProductsPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
-      <header className="mb-12 max-w-2xl">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold">All products</span>
-        <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white mt-2 mb-4">Four products, one company.</h1>
-        <p className="text-base text-slate-400 leading-relaxed">
-          Each lives at its own subdomain and runs its own roadmap. Pick the one you came for — or all four — and the “Report an issue” button on every card goes to the same intake.
-        </p>
-      </header>
+      <PageHeader
+        eyebrow="Four products. One company."
+        title={<>Everything here is real, <span className="spectrum-text">and shipping</span>.</>}
+        lead="Each product lives at its own home and runs its own roadmap. Pick the one you came for — or all four. The “Report an issue” button on every card routes to the same intake."
+      />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {PRODUCTS.map((p) => (
-          <ProductCard key={p.key} product={p} />
-        ))}
-      </div>
+      <ProductShowcase />
 
-      <div className="mt-16 grid sm:grid-cols-4 gap-4 text-xs text-slate-500">
-        <div>
-          <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1">Live</div>
-          <div className="text-slate-400">In production. Pays its own bills.</div>
+      <Reveal>
+        <div className="mt-20 grid sm:grid-cols-4 gap-4">
+          {STATUS_LEGEND.map((s) => (
+            <div key={s.label} className="rounded-xl border hairline bg-white/[0.02] p-4">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full" style={{ background: s.color }} />
+                <span className="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">{s.label}</span>
+              </div>
+              <div className="text-xs text-slate-500 leading-relaxed">{s.body}</div>
+            </div>
+          ))}
         </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1">Beta</div>
-          <div className="text-slate-400">Working software, edges still rough.</div>
-        </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1">Building</div>
-          <div className="text-slate-400">In active development. No public ETA.</div>
-        </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1">Coming soon</div>
-          <div className="text-slate-400">Scoped. Waiting on a green light.</div>
-        </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

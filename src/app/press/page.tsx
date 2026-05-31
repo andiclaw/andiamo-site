@@ -10,7 +10,7 @@ export default function PressPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
       <header className="mb-10">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold">Press</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Press</span>
         <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white mt-2 mb-4">
           Press &amp; media kit
         </h1>

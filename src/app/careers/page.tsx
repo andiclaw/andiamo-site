@@ -10,7 +10,7 @@ export const metadata = {
 export default function CareersPage() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-24 text-center">
-      <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold">Careers</span>
+      <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Careers</span>
       <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white mt-2 mb-4">
         Not hiring right now.
       </h1>

@@ -10,7 +10,7 @@ export default function AccessibilityPage() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
       <header className="mb-10 pb-6 border-b hairline">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold">Accessibility</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Accessibility</span>
         <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mt-2 mb-2">
           Accessibility statement
         </h1>
