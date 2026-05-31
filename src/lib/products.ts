@@ -19,7 +19,7 @@ export const PRODUCTS: Product[] = [
     name: 'Velocity',
     tagline: 'Trend intelligence the moment a story breaks.',
     valueProp:
-      'A real-time intel feed that scores momentum across security, markets, news, weather, and your own watchlists — so you see the move at minute one instead of hour six.',
+      'A real-time intel feed that scores momentum across security, markets, news, weather, and your own watchlists, so you see a story closer to minute one than hour six.',
     bullets: [
       '43 sources refreshed every 15 minutes',
       '0–100 composite score per story (volume, reach, recency, trust)',
@@ -37,7 +37,7 @@ export const PRODUCTS: Product[] = [
     name: 'Academy',
     tagline: 'Homeschool, compliant in every state.',
     valueProp:
-      'A learning platform that handles the regulatory side of homeschooling — 50-state requirements, recordkeeping, assessment prep, and progress reports — so families can focus on the kids, not the paperwork.',
+      'A learning platform that handles the regulatory side of homeschooling: 50-state requirements, recordkeeping, assessment prep, and progress reports, so families can spend more time on the kids and less on the paperwork.',
     bullets: [
       '51-state compliance catalog (and growing)',
       'Per-student lessons, assignments, and milestones',
@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
     name: 'Andiamo',
     tagline: 'Mobility, settled on rails the patent covers.',
     valueProp:
-      'A zone-mobility platform where riders post trips, operators bid, and a smart contract splits the fare across the operator, the city, a helper fund for subsidized rides, and platform maintenance — automatically.',
+      'A zone-mobility platform where riders post trips, operators bid, and a smart contract splits each fare across the operator, the city, a helper fund for subsidized rides, and platform maintenance.',
     bullets: [
       'Patent-protected smart-contract bid architecture (US 12,567,119 B1)',
       'Dual rails: pay with card or with the native ATS token',
@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     name: 'Pathfinder',
     tagline: 'A premium file manager for the Mac.',
     valueProp:
-      'A native macOS file manager (Tauri + Rust) for people who actually live on the filesystem — dual-pane, tabs, command palette, live folder-watch, git status, agent detection, and an integrated code editor.',
+      'A native macOS file manager (Tauri + Rust) for people who spend their day in the filesystem: dual-pane, tabs, command palette, live folder-watch, git status, agent detection, and an integrated code editor.',
     bullets: [
       'Tabs, dual-pane, command palette, Quick Look (⌥Space)',
       'Live folder-watch with +/- diffs and per-file git status',

@@ -5,7 +5,6 @@ export const COMPANY = {
   location: 'Skagit Valley, Washington',
   founded: 2024,
   supportEmail: 'support@andiamo.tech',
-  helloEmail: 'hello@andiamo.tech',
   domain: 'andiamo.tech',
 } as const;
 
@@ -17,53 +16,51 @@ export const PATENT = {
   inventor: 'Brendan Joseph McGoffin',
   filedDisplay: 'August 1, 2024',
   summary:
-    'A smart-contract-driven mobility settlement architecture: riders post trip parameters, vehicles bid, and an immutable on-chain record splits payment between the operator, the city of origin, a helper fund for subsidized rides, and platform maintenance. The same rails work in pure web2 (custodial wallet) or dApp (BYO wallet) mode.',
+    'A smart-contract settlement architecture for mobility. Riders post trip parameters, vehicles bid, and an immutable on-chain record splits payment between the operator, the city of origin, a helper fund for subsidized rides, and platform maintenance. The same rails work in conventional web2 mode (custodial wallet) or dApp mode (bring your own wallet).',
   usptoUrl: 'https://patents.google.com/patent/US12567119B1/',
 } as const;
 
 /**
- * The four-product spectrum — the signature brand device. Each product owns
- * a color; the umbrella brand is the spectrum of all four. Order matters:
- * it reads left-to-right cyan→violet→green→amber in the hero gradient.
+ * The four-product spectrum. Each product owns a color; the umbrella brand
+ * is the set of all four. Order reads cyan, violet, green, amber.
  */
 export const SPECTRUM = ['#22D3EE', '#8B5CF6', '#22C55E', '#F59E0B'] as const;
 export const SPECTRUM_GRADIENT =
   'linear-gradient(90deg, #22D3EE 0%, #6366F1 34%, #22C55E 67%, #F59E0B 100%)';
 
 /**
- * Marketing copy — single source of truth for the brand narrative so the
+ * Marketing copy. Single source of truth for the brand narrative so the
  * voice stays consistent across pages and the OG image.
  */
 export const BRAND = {
   eyebrow: 'Public Benefit Corporation',
   headline: 'Software with an obligation to you.',
   subhead:
-    'We are a Delaware Public Benefit Corporation — legally bound to weigh your interests against our own. Four products, built to that standard, by a small team in the Skagit Valley.',
-  // The PBC promise, made concrete. Three binding commitments.
-  promiseTitle: 'A promise with legal teeth.',
+    'We are a Delaware Public Benefit Corporation, which means our directors have a legal duty to weigh your interests alongside the bottom line. We build four products to that standard, from the Skagit Valley.',
+  promiseTitle: 'A promise with legal weight.',
   promiseLead:
-    '“Public Benefit Corporation” is not a marketing badge. It is a corporate charter that gives our directors a fiduciary duty to a stated public benefit — not to profit alone. Ours is plain: build software that respects the people who use it. In practice, that means three things we have put in writing.',
+    'A Public Benefit Corporation has a charter that gives its directors a duty to a stated public benefit, not to profit alone. Ours is to build software that respects the people who use it. Here is what that means in practice.',
   commitments: [
     {
       n: '01',
-      title: 'We don’t farm your attention.',
-      body: 'No infinite scroll engineered to trap you, no dark patterns, no engagement metric dressed up as a feature. Our products are designed to help you finish and leave.',
+      title: 'We do not farm your attention.',
+      body: 'No infinite scroll built to trap you, no dark patterns, no engagement metric dressed up as a feature. We want our products to help you finish and move on.',
     },
     {
       n: '02',
-      title: 'We don’t broker your data.',
-      body: 'We don’t sell it, rent it, or assemble shadow profiles. You can export everything we hold about you, and you can delete it. The default is the private one.',
+      title: 'We do not broker your data.',
+      body: 'We do not sell it, rent it, or build shadow profiles. You can export what we hold about you, and you can delete it. The default setting is the private one.',
     },
     {
       n: '03',
-      title: 'We can’t quietly walk this back.',
-      body: 'The next leadership team inherits the same charter. This is the point of incorporating as a PBC: the values survive a change of management, a funding round, or a hard quarter.',
+      title: 'This is hard to walk back.',
+      body: 'The next leadership team inherits the same charter. That is the reason we incorporated as a PBC: so the commitment survives a change of management or a hard quarter.',
     },
   ],
   studioTitle: 'Why we exist.',
   studioBody: [
-    'Andiamo Tech started with a patent and a frustration. The best tools for the things we cared about — getting around our county, teaching our kids, seeing what actually matters in the noise, managing our own files — were extractive, abandoned, or simply didn’t exist.',
-    'So we built them. Four products, each shipped to the same standard, each held to the same promise. We incorporated as a Public Benefit Corporation so that promise outlives any one of us.',
+    'Andiamo Tech started with a patent and a short list of tools we wished existed. The software for the things we cared about, getting around our county, teaching our kids, cutting through the noise, managing our own files, was either extractive, abandoned, or missing.',
+    'So we built our own. Four products, each held to the same standard and the same promise. We incorporated as a Public Benefit Corporation so that promise can outlast any one of us.',
   ],
 } as const;
 

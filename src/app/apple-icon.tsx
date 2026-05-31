@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 
-// Apple touch icon — iOS home-screen, Safari tab pinned, macOS shortcuts.
+// Apple touch icon, iOS home-screen, Safari tab pinned, macOS shortcuts.
 // Slightly different layout than favicon: more padding, larger glyph.
 export default function AppleIcon() {
   return new ImageResponse(

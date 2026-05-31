@@ -51,7 +51,7 @@ export default function PressPage() {
             <div key={p.key} className="rounded-xl border hairline bg-white/[0.02] p-5">
               <div className="flex items-baseline gap-2 mb-2">
                 <h3 className="text-base font-semibold text-white">{p.name}</h3>
-                <span className="text-xs text-slate-500">— {p.tagline}</span>
+                <span className="text-xs text-slate-500">{p.tagline}</span>
               </div>
               <p className="text-sm text-slate-400 leading-relaxed">{p.valueProp}</p>
             </div>
@@ -68,7 +68,7 @@ export default function PressPage() {
             Founder &amp; CEO, {COMPANY.legalName}. Inventor on US {PATENT.number}, which protects the mobility settlement architecture inside the Andiamo product. Based in {COMPANY.location}.
           </p>
           <p className="text-xs text-slate-500 italic">
-            Full bio coming soon — email <a href={`mailto:${COMPANY.helloEmail}`} className="text-cyan-400 hover:text-cyan-300">{COMPANY.helloEmail}</a> if you need it for a piece on deadline.
+            Full bio coming soon. Email <a href={`mailto:${COMPANY.supportEmail}`} className="text-cyan-400 hover:text-cyan-300">{COMPANY.supportEmail}</a> if you need it for a piece on deadline.
           </p>
         </div>
       </section>
@@ -88,10 +88,10 @@ export default function PressPage() {
         <h2 className="text-xl font-bold text-white mb-4">Media contact</h2>
         <div className="rounded-2xl border hairline bg-gradient-to-br from-cyan-500/[0.04] via-transparent to-blue-500/[0.04] p-6 text-sm text-slate-300 leading-relaxed">
           <p className="mb-3">
-            Press inquiries, interview requests, fact checks: <a href={`mailto:${COMPANY.helloEmail}?subject=Press%20inquiry`} className="text-cyan-300 hover:text-cyan-200 font-semibold">{COMPANY.helloEmail}</a>
+            Press inquiries, interview requests, fact checks: <a href={`mailto:${COMPANY.supportEmail}?subject=Press%20inquiry`} className="text-cyan-300 hover:text-cyan-200 font-semibold">{COMPANY.supportEmail}</a>
           </p>
           <p className="text-slate-400">
-            Same email for partnership and investor inquiries — we route internally. Response within one business day for most asks; same-day for deadline pieces if you say &quot;deadline: [time]&quot; in the subject.
+            Same email for partnership and investor inquiries; we route internally. We aim to respond within one business day, and same-day for deadline pieces if you put &quot;deadline: [time]&quot; in the subject.
           </p>
         </div>
       </section>

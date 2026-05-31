@@ -7,7 +7,7 @@ import { Reveal } from './reveal';
 /**
  * Home-page product showcase: one full-width row per product, alternating
  * sides, each owning its accent color. This is where the four-color brand
- * system does its work — each product is unmistakably itself.
+ * system does its work, each product is unmistakably itself.
  */
 export function ProductShowcase() {
   return (

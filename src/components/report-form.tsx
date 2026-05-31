@@ -94,7 +94,7 @@ export function ReportForm({ defaultProduct }: { defaultProduct?: string }) {
             onChange={(e) => setProduct(e.target.value)}
             className="w-full px-4 py-2.5 rounded-pill bg-white/[0.04] border hairline text-sm text-slate-200 focus:outline-none focus:border-cyan-500/40"
           >
-            <option value="">— Pick one if relevant —</option>
+            <option value="">Pick one if relevant</option>
             {PRODUCTS.map((p) => (
               <option key={p.key} value={p.key}>{p.name}</option>
             ))}
@@ -124,7 +124,7 @@ export function ReportForm({ defaultProduct }: { defaultProduct?: string }) {
           maxLength={140}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          placeholder="One line — what is this about?"
+          placeholder="One line: what is this about?"
           className="w-full px-4 py-2.5 rounded-pill bg-white/[0.04] border hairline text-sm text-slate-200 focus:outline-none focus:border-cyan-500/40"
         />
       </div>

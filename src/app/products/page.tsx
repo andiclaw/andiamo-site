@@ -17,7 +17,7 @@ export default function ProductsPage() {
       <PageHeader
         eyebrow="Four products. One company."
         title={<>Everything here is real, <span className="spectrum-text">and shipping</span>.</>}
-        lead="Each product lives at its own home and runs its own roadmap. Pick the one you came for — or all four. The “Report an issue” button on every card routes to the same intake."
+        lead="Each product lives at its own home and runs its own roadmap. Pick the one you came for, or look at all four. The “Report an issue” button on every card routes to the same intake."
       />
 
       <ProductShowcase />

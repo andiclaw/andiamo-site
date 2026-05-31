@@ -35,7 +35,7 @@ export function Footer() {
             <li><Link href="/press" className="focusable hover:text-white transition-colors">Press</Link></li>
             <li><Link href="/careers" className="focusable hover:text-white transition-colors">Careers</Link></li>
             <li><Link href="/report" className="focusable hover:text-white transition-colors">Report an issue</Link></li>
-            <li><a href={`mailto:${COMPANY.helloEmail}`} className="focusable hover:text-white transition-colors">{COMPANY.helloEmail}</a></li>
+            <li><a href={`mailto:${COMPANY.supportEmail}`} className="focusable hover:text-white transition-colors">{COMPANY.supportEmail}</a></li>
           </ul>
         </div>
 

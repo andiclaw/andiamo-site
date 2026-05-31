@@ -7,7 +7,7 @@ import { COMPANY } from '@/lib/company';
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${COMPANY.domain}`),
   title: {
-    default: `${COMPANY.shortName} — A Delaware PBC building tools that respect their users`,
+    default: `${COMPANY.shortName}, A Delaware PBC building tools that respect their users`,
     template: `%s · ${COMPANY.shortName}`,
   },
   description:
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${COMPANY.shortName}`,
     description:
-      'A Delaware PBC building Velocity, Academy, Andiamo, and Pathfinder — tools that respect their users.',
+      'A Delaware PBC building Velocity, Academy, Andiamo, and Pathfinder, tools that respect their users.',
     type: 'website',
     siteName: COMPANY.shortName,
     url: `https://${COMPANY.domain}`,

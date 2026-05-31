@@ -23,7 +23,7 @@ export default function HomePage() {
         />
       </div>
 
-      {/* Rideshare deflection — most legacy andiamo.tech traffic wants the app */}
+      {/* Rideshare deflection: most legacy andiamo.tech traffic wants the app */}
       <div className="max-w-6xl mx-auto px-6 pt-6">
         <a
           href="https://app.andiamo.tech"
@@ -113,10 +113,10 @@ export default function HomePage() {
       <section id="products" className="max-w-6xl mx-auto px-6 py-20 scroll-mt-20">
         <Reveal>
           <div className="max-w-2xl mb-16">
-            <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Four products. Not four slides.</span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Everything here is real, and shipping.</h2>
+            <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">The products</span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, in production.</h2>
             <p className="text-base text-slate-400 leading-relaxed">
-              Each product lives at its own home and runs its own roadmap. Pick the one you came for — or all four.
+              Each one lives at its own home and runs its own roadmap. Pick the one you came for, or look at all four.
             </p>
           </div>
         </Reveal>
@@ -146,7 +146,7 @@ export default function HomePage() {
                 US Patent {PATENT.number}
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2 mb-4">
-                We build real intellectual property.
+                The mobility product is patent-backed.
               </h2>
               <p className="text-sm text-slate-400 leading-relaxed max-w-2xl">{PATENT.summary}</p>
             </div>
@@ -183,9 +183,9 @@ export default function HomePage() {
         <Reveal>
           <div className="relative rounded-3xl border hairline-bold overflow-hidden p-10 sm:p-16 text-center">
             <div className="absolute inset-0 -z-10 spectrum-bg-animated opacity-[0.08]" />
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Start with one. Or all four.</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Start with one, or all four.</h2>
             <p className="text-base text-slate-400 max-w-xl mx-auto mb-8">
-              Every product is free to try. And if you ever find something we should fix — a bug, a vulnerability, a takedown — one form routes it to the right team.
+              Every product is free to try. If you find something we should fix, whether a bug, a vulnerability, or a takedown, one form routes it to the right team.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="#products" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary">

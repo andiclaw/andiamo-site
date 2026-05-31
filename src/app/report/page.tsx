@@ -22,7 +22,7 @@ export default async function ReportPage({ searchParams }: SearchParams) {
           One form. We route it.
         </h1>
         <p className="text-slate-400 leading-relaxed">
-          Whether it’s a vulnerability, a DMCA notice, a takedown request, or just a bug — fill this out and the right team picks it up. Everything lands at <span className="text-slate-300">{COMPANY.supportEmail}</span>.
+          Whether it’s a vulnerability, a DMCA notice, a takedown request, or a bug, fill this out and the right team picks it up. Everything lands at <span className="text-slate-300">{COMPANY.supportEmail}</span>.
         </p>
       </header>
 

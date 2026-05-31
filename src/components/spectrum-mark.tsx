@@ -1,7 +1,7 @@
 import { SPECTRUM } from '@/lib/company';
 
 /**
- * The four-dot spectrum mark — the umbrella brand's signature device. Four
+ * The four-dot spectrum mark, the umbrella brand's signature device. Four
  * dots, one per product color, that read as a single object. Used in the
  * hero and as a recurring motif.
  */
@@ -35,7 +35,7 @@ export function SpectrumDots({ size = 10, gap = 8 }: { size?: number; gap?: numb
 }
 
 /**
- * A thin animated spectrum bar — used as a section divider / signature accent.
+ * A thin animated spectrum bar, used as a section divider / signature accent.
  */
 export function SpectrumBar({ className = '' }: { className?: string }) {
   return <div className={`h-px w-full spectrum-bg-animated ${className}`} aria-hidden />;

@@ -11,7 +11,7 @@ const SECTIONS = [
     h: 'Why a Public Benefit Corporation.',
     body: (
       <>
-        A Public Benefit Corporation has a <strong className="text-slate-200">legally enforceable</strong> charter to balance shareholder returns against a stated public benefit. For us that benefit is plain: build software that respects the people who use it. No dark patterns, no data brokerage, no attention farming. The charter exists so the next leadership team can’t quietly drop that commitment when growth gets harder — it’s a value system with a fiduciary backstop, not a slogan.
+        A Public Benefit Corporation has a charter that asks its directors to balance shareholder returns against a stated public benefit. Ours is to build software that respects the people who use it: no dark patterns, no data brokerage, no attention farming. The charter is meant to keep that commitment in place through a change of leadership or a hard quarter.
       </>
     ),
   },
@@ -27,7 +27,7 @@ const SECTIONS = [
     h: 'What we own.',
     body: (
       <>
-        The mobility settlement architecture inside <Link href="/patent" className="text-cyan-300 hover:text-cyan-200">Andiamo</Link> is protected by US Patent <Link href="/patent" className="text-cyan-300 hover:text-cyan-200">{PATENT.number}</Link> — smart-contract bid matching, dual-rail payment (fiat or token), a helper fund for subsidized rides, and an on-chain certification model for autonomous vehicles. Velocity, Academy, and Pathfinder run on conventional rails.
+        The mobility settlement architecture inside <Link href="/patent" className="text-cyan-300 hover:text-cyan-200">Andiamo</Link> is protected by US Patent <Link href="/patent" className="text-cyan-300 hover:text-cyan-200">{PATENT.number}</Link>, covering smart-contract bid matching, dual-rail payment (fiat or token), a helper fund for subsidized rides, and an on-chain certification model for autonomous vehicles. Velocity, Academy, and Pathfinder run on conventional rails.
       </>
     ),
   },
@@ -35,7 +35,7 @@ const SECTIONS = [
     h: 'How to reach us.',
     body: (
       <>
-        Email <a href={`mailto:${COMPANY.helloEmail}`} className="text-cyan-300 hover:text-cyan-200">{COMPANY.helloEmail}</a> for general inquiries, partnerships, or press. For security findings, takedown, DMCA, or bug reports use the <Link href="/report" className="text-cyan-300 hover:text-cyan-200">issue intake form</Link> — it routes to the right team faster than email.
+        Email <a href={`mailto:${COMPANY.supportEmail}`} className="text-cyan-300 hover:text-cyan-200">{COMPANY.supportEmail}</a> for general inquiries, partnerships, or press. For security findings, takedown, DMCA, or bug reports, the <Link href="/report" className="text-cyan-300 hover:text-cyan-200">issue intake form</Link> routes to the right team faster than email.
       </>
     ),
   },
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title={<>A small team. <span className="spectrum-text">A public charter.</span></>}
-        lead={`${COMPANY.legalName} is a Delaware Public Benefit Corporation operating from ${COMPANY.location}. Founded in ${COMPANY.founded}, we ship four products under one roof — held to one promise.`}
+        lead={`${COMPANY.legalName} is a Delaware Public Benefit Corporation operating from ${COMPANY.location}. Founded in ${COMPANY.founded}, we build four products under one roof, held to one promise.`}
       />
 
       <div className="space-y-10">

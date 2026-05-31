@@ -1,16 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" role="img" aria-label="Andiamo Tech">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64" role="img" aria-label="Andiamo Tech">
   <defs>
-    <linearGradient id="wm-grad" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#E2E8F0"/>
-      <stop offset="1" stop-color="#F8FAFC"/>
-    </linearGradient>
+    <mask id="wm-counter">
+      <rect width="300" height="64" fill="white"/>
+      <circle cx="20.5" cy="35" r="6" fill="black"/>
+    </mask>
   </defs>
-  <text x="0" y="44"
+  <!-- glyph mark -->
+  <g fill="#33A532" mask="url(#wm-counter)">
+    <circle cx="20.5" cy="35" r="15.5"/>
+    <rect x="33" y="18" width="8.5" height="34" rx="1.8"/>
+  </g>
+  <!-- wordmark -->
+  <text x="52" y="44"
         font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-        font-size="36" font-weight="800" letter-spacing="-1.2"
-        fill="url(#wm-grad)">andiamo</text>
-  <text x="178" y="44"
+        font-size="32" font-weight="700" letter-spacing="-0.5"
+        fill="#F1F5F9">andiamo</text>
+  <text x="194" y="44"
         font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
-        font-size="36" font-weight="300" letter-spacing="2"
-        fill="#22D3EE">tech</text>
+        font-size="32" font-weight="400" letter-spacing="1"
+        fill="#33A532">tech</text>
 </svg>

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
  * Scroll-reveal wrapper. Adds the `.in` class when the element first enters
  * the viewport, driving the fade-up defined in globals.css. Respects
  * prefers-reduced-motion (the CSS zeroes the transition there, so content
- * still appears — it just doesn't animate). Renders content immediately if
+ * still appears, it just doesn't animate). Renders content immediately if
  * IntersectionObserver is unavailable.
  */
 export function Reveal({

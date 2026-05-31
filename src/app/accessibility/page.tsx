@@ -62,10 +62,10 @@ export default function AccessibilityPage() {
         <div>
           <h2 className="text-lg font-bold text-white mb-3">Tell us when we miss something</h2>
           <p className="text-sm">
-            If you encounter a barrier on this site — anything from a missing alt text to a contrast issue to something a screen reader can&apos;t parse — please tell us. We treat accessibility findings the same as security findings: triaged within one business day, fixed promptly, acknowledged when fixed.
+            If you run into a barrier on this site, whether a missing alt text, a contrast issue, or something a screen reader can&apos;t parse, please tell us. We treat accessibility findings the same way we treat security findings: triaged within one business day, fixed, and acknowledged when fixed.
           </p>
           <p className="text-sm mt-3">
-            File via the <Link href="/report" className="text-cyan-300 hover:text-cyan-200">report form</Link> (pick &quot;Something else&quot; and mention accessibility) or email <a href={`mailto:${COMPANY.helloEmail}?subject=Accessibility%20feedback`} className="text-cyan-300 hover:text-cyan-200">{COMPANY.helloEmail}</a> directly.
+            File via the <Link href="/report" className="text-cyan-300 hover:text-cyan-200">report form</Link> (pick &quot;Something else&quot; and mention accessibility) or email <a href={`mailto:${COMPANY.supportEmail}?subject=Accessibility%20feedback`} className="text-cyan-300 hover:text-cyan-200">{COMPANY.supportEmail}</a> directly.
           </p>
         </div>
 

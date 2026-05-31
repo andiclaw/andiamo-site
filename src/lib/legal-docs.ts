@@ -27,7 +27,7 @@ export const PRIVACY: LegalDoc = {
     },
     {
       heading: 'Your rights',
-      body: `Email ${COMPANY.helloEmail} for access, deletion, or correction requests for data this site holds about you. We respond within 30 days. For data held by an individual product, contact that product directly.`,
+      body: `Email ${COMPANY.supportEmail} for access, deletion, or correction requests for data this site holds about you. We respond within 30 days. For data held by an individual product, contact that product directly.`,
     },
     {
       heading: 'Children',
@@ -39,7 +39,7 @@ export const PRIVACY: LegalDoc = {
     },
     {
       heading: 'Contact',
-      body: `${COMPANY.legalName}, ${COMPANY.location}. Email: ${COMPANY.helloEmail}.`,
+      body: `${COMPANY.legalName}, ${COMPANY.location}. Email: ${COMPANY.supportEmail}.`,
     },
   ],
 };
@@ -65,7 +65,7 @@ export const TERMS: LegalDoc = {
     {
       heading: 'Acceptable use',
       body: [
-        `Don't probe, scan, or attempt to breach the security of this site or its infrastructure without prior written permission. Good-faith security research is welcome — use the /report form first.`,
+        `Don't probe, scan, or attempt to breach the security of this site or its infrastructure without prior written permission. Good-faith security research is welcome; use the /report form first.`,
         `Don't scrape the site for the purpose of training machine-learning models without prior written permission.`,
       ],
     },
@@ -87,7 +87,7 @@ export const TERMS: LegalDoc = {
     },
     {
       heading: 'Contact',
-      body: `${COMPANY.legalName}, ${COMPANY.location}. Email: ${COMPANY.helloEmail}.`,
+      body: `${COMPANY.legalName}, ${COMPANY.location}. Email: ${COMPANY.supportEmail}.`,
     },
   ],
 };
@@ -104,7 +104,7 @@ export const COOKIES: LegalDoc = {
     },
     {
       heading: 'What our hosting sets',
-      body: `This site runs on Microsoft Azure App Service. Azure's load balancer can optionally set a session-affinity cookie (\`ARRAffinity\`) to pin a visitor to a single backend instance. We have explicitly disabled that feature because this site is stateless and does not need it. If you ever inspect this site and find an \`ARRAffinity\` cookie, please email ${COMPANY.helloEmail} — it would mean the setting was re-enabled and this policy is out of date.`,
+      body: `This site runs on Microsoft Azure App Service. Azure's load balancer can optionally set a session-affinity cookie (\`ARRAffinity\`) to pin a visitor to a single backend instance. We have explicitly disabled that feature because this site is stateless and does not need it. If you ever inspect this site and find an \`ARRAffinity\` cookie, please email ${COMPANY.supportEmail}; it would mean the setting was re-enabled and this policy is out of date.`,
     },
     {
       heading: 'What our products set',
@@ -116,7 +116,7 @@ export const COOKIES: LegalDoc = {
     },
     {
       heading: 'Contact',
-      body: `Questions: ${COMPANY.helloEmail}.`,
+      body: `Questions: ${COMPANY.supportEmail}.`,
     },
   ],
 };
