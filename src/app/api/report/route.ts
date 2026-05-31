@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     `From:    ${email}`,
     `Subject: ${subject}`,
     '',
-    ',  Message , ',
+    'Message:',
     message,
   ].join('\n');
 

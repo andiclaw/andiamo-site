@@ -31,7 +31,7 @@ export default async function ReportPage({ searchParams }: SearchParams) {
       <div className="mt-10 pt-6 border-t hairline text-xs text-slate-500 space-y-2 leading-relaxed">
         <p><strong className="text-slate-400">Security reports:</strong> we publish a coordinated-disclosure response within 72 hours. We don’t pursue good-faith researchers acting within the bounds of our security policy.</p>
         <p><strong className="text-slate-400">DMCA notices:</strong> we follow 17 U.S.C. § 512 takedown/counter-notice procedure. Include all six statutory elements or the notice may be returned.</p>
-        <p><strong className="text-slate-400">PGP / signal:</strong> available on request, reply to our confirmation email and we’ll send the fingerprint.</p>
+        <p><strong className="text-slate-400">PGP / signal:</strong> available on request. Reply to our confirmation email and we’ll send the fingerprint.</p>
       </div>
     </div>
   );

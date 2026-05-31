@@ -38,6 +38,7 @@ export default function AccessibilityPage() {
             <li className="flex gap-2"><span className="text-cyan-400">✓</span><span>All form inputs have associated labels and error messaging.</span></li>
             <li className="flex gap-2"><span className="text-cyan-400">✓</span><span>Decorative images use <code className="text-cyan-300">alt=&quot;&quot;</code>; informative images have descriptive alt text.</span></li>
             <li className="flex gap-2"><span className="text-cyan-400">✓</span><span>Keyboard navigation works on every page; no mouse-only interactions.</span></li>
+            <li className="flex gap-2"><span className="text-cyan-400">✓</span><span>A skip-to-content link as the first focusable element.</span></li>
             <li className="flex gap-2"><span className="text-cyan-400">✓</span><span>Reduced-motion preferences are respected for any decorative animation.</span></li>
           </ul>
         </div>
@@ -45,10 +46,8 @@ export default function AccessibilityPage() {
         <div>
           <h2 className="text-lg font-bold text-white mb-3">What we&apos;re still working on</h2>
           <ul className="space-y-2 text-sm">
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Light-mode theme, the site is currently dark-only. A toggle is on the roadmap.</span></li>
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Skip-to-content link in the header.</span></li>
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Mobile navigation, header items currently render horizontally at all widths.</span></li>
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Formal third-party WCAG audit (planned for v1.0, post-cutover).</span></li>
+            <li className="flex gap-2"><span className="text-amber-400">○</span><span>A light-mode theme. The site is currently dark-only; a toggle is on the roadmap.</span></li>
+            <li className="flex gap-2"><span className="text-amber-400">○</span><span>A formal third-party WCAG audit, planned for v1.0, after cutover.</span></li>
           </ul>
         </div>
 
