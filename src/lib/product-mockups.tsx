@@ -3,7 +3,7 @@ import type { Product } from './products';
 
 /**
  * Mini inline SVG mockup per product. Rendered at ~360x200 inside the
- * product card. Pure SVG — no images, no JS — so it survives static
+ * product card. Pure SVG, no images, no JS, so it survives static
  * export, OG-image rendering, and offline cases. Styled with each
  * product's accent color.
  */
@@ -21,7 +21,7 @@ export const PRODUCT_MOCKUP: Record<Product['key'], () => ReactNode> = {
         { rank: '01', title: 'Major exchange announces zero-fee tier', arrow: '▲▲', score: 87, color: '#6ee7b7' },
         { rank: '02', title: 'CISA flags critical router-firmware vuln', arrow: '▲▲', score: 81, color: '#6ee7b7' },
         { rank: '03', title: 'OpenAI ships GPT-6 reasoning preview', arrow: '▲', score: 74, color: '#34d399' },
-        { rank: '04', title: 'NWS severe weather watch — west coast', arrow: '▲', score: 62, color: '#34d399' },
+        { rank: '04', title: 'NWS severe weather watch, west coast', arrow: '▲', score: 62, color: '#34d399' },
         { rank: '05', title: 'BTC reclaims $120K after 36-hour rally', arrow: '→', score: 58, color: '#94a3b8' },
       ].map((row, i) => (
         <g key={row.rank} transform={`translate(0, ${36 + i * 28})`}>

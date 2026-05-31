@@ -78,13 +78,13 @@ export async function POST(req: Request) {
     `From:    ${email}`,
     `Subject: ${subject}`,
     '',
-    '— Message —',
+    ',  Message , ',
     message,
   ].join('\n');
 
   const htmlBody = `
     <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a;max-width:640px;">
-      <h2 style="margin:0 0 12px 0;font-size:16px;">${escapeHtml(kindLabel)} — ${escapeHtml(productLabel)}</h2>
+      <h2 style="margin:0 0 12px 0;font-size:16px;">${escapeHtml(kindLabel)}, ${escapeHtml(productLabel)}</h2>
       <table style="border-collapse:collapse;font-size:13px;margin-bottom:16px;">
         <tr><td style="padding:2px 8px 2px 0;color:#64748b;">From</td><td style="padding:2px 0;">${escapeHtml(email)}</td></tr>
         <tr><td style="padding:2px 8px 2px 0;color:#64748b;">Subject</td><td style="padding:2px 0;">${escapeHtml(subject)}</td></tr>
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
 
   if (!token) {
     if (process.env.NODE_ENV !== 'production') {
-      console.warn(`[report] POSTMARK_SERVER_TOKEN unset — skipping send. Would have sent: "${fullSubject}" to ${to}`);
+      console.warn(`[report] POSTMARK_SERVER_TOKEN unset, skipping send. Would have sent: "${fullSubject}" to ${to}`);
       return NextResponse.json({ ok: true, delivered: false, dev: true });
     }
     return NextResponse.json({ error: 'Mailer not configured.' }, { status: 503 });

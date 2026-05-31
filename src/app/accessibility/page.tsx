@@ -45,9 +45,9 @@ export default function AccessibilityPage() {
         <div>
           <h2 className="text-lg font-bold text-white mb-3">What we&apos;re still working on</h2>
           <ul className="space-y-2 text-sm">
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Light-mode theme — the site is currently dark-only. A toggle is on the roadmap.</span></li>
+            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Light-mode theme, the site is currently dark-only. A toggle is on the roadmap.</span></li>
             <li className="flex gap-2"><span className="text-amber-400">○</span><span>Skip-to-content link in the header.</span></li>
-            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Mobile navigation — header items currently render horizontally at all widths.</span></li>
+            <li className="flex gap-2"><span className="text-amber-400">○</span><span>Mobile navigation, header items currently render horizontally at all widths.</span></li>
             <li className="flex gap-2"><span className="text-amber-400">○</span><span>Formal third-party WCAG audit (planned for v1.0, post-cutover).</span></li>
           </ul>
         </div>
