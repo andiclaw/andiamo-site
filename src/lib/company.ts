@@ -1,8 +1,9 @@
 export const COMPANY = {
   legalName: 'Andiamo Tech, Inc.',
   shortName: 'Andiamo Tech',
-  pbcLine: 'A Delaware Public Benefit Corporation, operating from Washington State.',
-  location: 'Skagit Valley, Washington',
+  motto: 'Building software to better the world.',
+  pbcLine: 'A Delaware Public Benefit Corporation, headquartered in Sedro-Woolley, Washington.',
+  location: 'Sedro-Woolley, Washington',
   founded: 2024,
   supportEmail: 'support@andiamo.tech',
   domain: 'andiamo.tech',
@@ -33,34 +34,31 @@ export const SPECTRUM_GRADIENT =
  * voice stays consistent across pages and the OG image.
  */
 export const BRAND = {
-  eyebrow: 'Public Benefit Corporation',
-  headline: 'Software with an obligation to you.',
+  eyebrow: 'Building software to better the world',
+  headline: 'Software that solves real, everyday problems.',
   subhead:
-    'We are a Delaware Public Benefit Corporation, which means our directors have a legal duty to weigh your interests alongside the bottom line. We build four products to that standard, from the Skagit Valley.',
-  promiseTitle: 'A promise with legal weight.',
-  promiseLead:
-    'A Public Benefit Corporation has a charter that gives its directors a duty to a stated public benefit, not to profit alone. Ours is to build software that respects the people who use it. Here is what that means in practice.',
-  commitments: [
-    {
-      n: '01',
-      title: 'We do not farm your attention.',
-      body: 'No infinite scroll built to trap you, no dark patterns, no engagement metric dressed up as a feature. We want our products to help you finish and move on.',
-    },
-    {
-      n: '02',
-      title: 'We do not broker your data.',
-      body: 'We do not sell it, rent it, or build shadow profiles. You can export what we hold about you, and you can delete it. The default setting is the private one.',
-    },
-    {
-      n: '03',
-      title: 'This is hard to walk back.',
-      body: 'The next leadership team inherits the same charter. That is the reason we incorporated as a PBC: so the commitment survives a change of management or a hard quarter.',
-    },
+    'We build applications that directly support people and tackle the problems businesses and communities run into every day. Four products so far, each aimed at a real need.',
+  // Mission strip, the "what we do" framing that leads the page.
+  missionTitle: 'Forward-focused, problem-first.',
+  missionLead:
+    'We start with a problem a real person or community is living with, then build the software that solves it. Our work spans trend intelligence, education, mobility, and developer tools, but the throughline is the same: make something useful, and make it well.',
+  // Impact section intro.
+  impactTitle: 'How the work helps.',
+  impactLead:
+    'Every product is built to matter at three scales at once: the person using it, the community around them, and the wider world.',
+  impactScales: [
+    { key: 'person', label: 'For a person' },
+    { key: 'community', label: 'For a community' },
+    { key: 'world', label: 'For the world' },
   ],
+  // PBC is a supporting detail now, not the headline.
+  pbcTitle: 'Built as a Public Benefit Corporation.',
+  pbcBody:
+    'We are incorporated as a Delaware Public Benefit Corporation, which gives our directors a duty to a stated public benefit and not to profit alone. In practice it means we do not farm attention, we do not broker your data, and the commitment is written into the charter so it outlasts any one of us.',
   studioTitle: 'Why we exist.',
   studioBody: [
-    'Andiamo Tech started with a patent and a short list of tools we wished existed. The software for the things we cared about, getting around our county, teaching our kids, cutting through the noise, managing our own files, was either extractive, abandoned, or missing.',
-    'So we built our own. Four products, each held to the same standard and the same promise. We incorporated as a Public Benefit Corporation so that promise can outlast any one of us.',
+    'Andiamo Tech started with a short list of tools we wished existed. The software for the things we cared about, getting around our county, teaching our kids, cutting through the noise, managing our own files, was either extractive, abandoned, or missing.',
+    'So we built our own. Four products so far, each aimed at a problem people actually have, and each built to last.',
   ],
 } as const;
 

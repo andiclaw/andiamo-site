@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Andiamo Tech, Inc., Software with an obligation to you.';
+export const alt = 'Andiamo Tech, Inc. Building software to better the world.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -58,14 +58,14 @@ export default async function OpengraphImage() {
               color: '#cbd5e1',
             }}
           >
-            DELAWARE PUBLIC BENEFIT CORPORATION
+            BUILDING SOFTWARE TO BETTER THE WORLD
           </div>
         </div>
 
         {/* Headline */}
         <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 980 }}>
-          <span style={{ fontSize: 78, fontWeight: 900, letterSpacing: -2.5, lineHeight: 1.04 }}>
-            Software with an{' '}
+          <span style={{ fontSize: 76, fontWeight: 900, letterSpacing: -2.5, lineHeight: 1.04 }}>
+            Software that solves{' '}
             <span
               style={{
                 backgroundImage: 'linear-gradient(90deg, #67e8f9, #a78bfa 45%, #4ade80 75%, #fbbf24)',
@@ -73,12 +73,12 @@ export default async function OpengraphImage() {
                 color: 'transparent',
               }}
             >
-              obligation
+              real, everyday
             </span>{' '}
-            to you.
+            problems.
           </span>
           <span style={{ fontSize: 24, color: '#94a3b8', marginTop: 22, lineHeight: 1.4, maxWidth: 880 }}>
-            Four products, built by a small team that&apos;s legally bound to put the people who use them first.
+            Four products that directly support people and solve problems businesses and communities face every day.
           </span>
         </div>
 

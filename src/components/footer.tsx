@@ -13,6 +13,7 @@ export function Footer() {
             <img src="/brand/logo-mark.svg" alt="" width={26} height={26} className="rounded-md" />
             <span className="font-semibold text-white">{COMPANY.shortName}</span>
           </div>
+          <div className="text-sm text-slate-300 leading-snug mb-2">{COMPANY.motto}</div>
           <div className="text-xs text-slate-400 leading-relaxed">{COMPANY.pbcLine}</div>
           <div className="mt-4"><SpectrumDots size={6} gap={5} /></div>
         </div>

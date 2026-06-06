@@ -8,10 +8,10 @@ export const metadata = { title: 'About' };
 
 const SECTIONS = [
   {
-    h: 'Why a Public Benefit Corporation.',
+    h: 'What we do.',
     body: (
       <>
-        A Public Benefit Corporation has a charter that asks its directors to balance shareholder returns against a stated public benefit. Ours is to build software that respects the people who use it: no dark patterns, no data brokerage, no attention farming. The charter is meant to keep that commitment in place through a change of leadership or a hard quarter.
+        We build applications that directly support people and solve problems businesses and communities run into every day. The work spans trend intelligence, education, mobility, and developer tools, but the throughline is the same: start with a real problem, then build something useful and build it well.
       </>
     ),
   },
@@ -19,7 +19,15 @@ const SECTIONS = [
     h: 'Where we are.',
     body: (
       <>
-        Incorporated in Delaware, operating from {COMPANY.location}. Most of the team is in the Pacific Northwest; we work distributed and ship in public.
+        Headquartered in {COMPANY.location}, in the Skagit Valley. Most of the team is in the Pacific Northwest; we work distributed and ship in public.
+      </>
+    ),
+  },
+  {
+    h: 'How we are organized.',
+    body: (
+      <>
+        We are incorporated as a Delaware Public Benefit Corporation. That gives our directors a duty to a stated public benefit, not to profit alone: no dark patterns, no data brokerage, no attention farming. The charter keeps that commitment in place through a change of leadership or a hard quarter.
       </>
     ),
   },
@@ -46,8 +54,8 @@ export default function AboutPage() {
     <div className="max-w-3xl mx-auto px-6 py-16">
       <PageHeader
         eyebrow="About"
-        title={<>A small team. <span className="spectrum-text">A public charter.</span></>}
-        lead={`${COMPANY.legalName} is a Delaware Public Benefit Corporation operating from ${COMPANY.location}. Founded in ${COMPANY.founded}, we build four products under one roof, held to one promise.`}
+        title={<>Building software to <span className="spectrum-text">better the world.</span></>}
+        lead={`${COMPANY.legalName} builds applications that directly support people and solve everyday problems for businesses and communities. Founded in ${COMPANY.founded} and headquartered in ${COMPANY.location}.`}
       />
 
       <div className="space-y-10">

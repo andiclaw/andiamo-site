@@ -11,6 +11,8 @@ export interface Product {
   accent: string; // hex
   licenseLine: string;
   audience: string;
+  /** How the product helps at three scales. Drives the impact section. */
+  impact: { person: string; community: string; world: string };
 }
 
 export const PRODUCTS: Product[] = [
@@ -31,6 +33,11 @@ export const PRODUCTS: Product[] = [
     accent: '#22D3EE',
     licenseLine: 'Closed source · subscription tiers from $0/mo',
     audience: 'Traders, security teams, founders, journalists, and AI agents.',
+    impact: {
+      person: 'Cuts through the noise so you act on what matters instead of doomscrolling for it.',
+      community: 'Gives local teams and newsrooms an early read on threats, weather, and emergencies in their area.',
+      world: 'Shortens the gap between a signal breaking and the people who need it being able to respond.',
+    },
   },
   {
     key: 'academy',
@@ -49,6 +56,11 @@ export const PRODUCTS: Product[] = [
     accent: '#8B5CF6',
     licenseLine: 'Closed source · per-family subscription',
     audience: 'Homeschool parents, microschools, and tutoring co-ops.',
+    impact: {
+      person: 'Gives a parent back the hours that compliance paperwork used to eat, so they can teach.',
+      community: 'Lets microschools and co-ops run by the book without hiring an administrator to do it.',
+      world: 'Makes a rigorous, lawful education reachable for families the traditional system leaves behind.',
+    },
   },
   {
     key: 'andiamo',
@@ -67,6 +79,11 @@ export const PRODUCTS: Product[] = [
     accent: '#22C55E',
     licenseLine: 'Closed source · open API once GA',
     audience: 'Riders, fleet operators, transit authorities, and cities.',
+    impact: {
+      person: 'Gets someone without a car to work, school, or the doctor, with a fare they can actually afford.',
+      community: 'Keeps a share of every fare in the city of origin and funds subsidized rides for neighbors who need them.',
+      world: 'Shows mobility can be settled fairly and transparently, with equity built into the payment rails rather than bolted on.',
+    },
   },
   {
     key: 'pathfinder',
@@ -85,6 +102,11 @@ export const PRODUCTS: Product[] = [
     accent: '#F59E0B',
     licenseLine: 'Open source · MIT',
     audience: 'Developers, power users, and anyone who Finder has let down.',
+    impact: {
+      person: 'Gives anyone who lives in their files a faster, calmer way to find and manage them.',
+      community: 'Ships free and open source, so any developer can use it, learn from it, or build on it.',
+      world: 'Adds a capable, privacy-respecting tool to the commons instead of locking it behind a paywall.',
+    },
   },
 ];
 

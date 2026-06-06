@@ -7,23 +7,23 @@ import { COMPANY } from '@/lib/company';
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${COMPANY.domain}`),
   title: {
-    default: `${COMPANY.shortName}, A Delaware PBC building tools that respect their users`,
+    default: `${COMPANY.shortName} — Building software to better the world`,
     template: `%s · ${COMPANY.shortName}`,
   },
   description:
-    'Andiamo Tech, Inc. is a Delaware Public Benefit Corporation building four products: Velocity (trend intelligence), Academy (homeschool compliance), Andiamo (patent-backed mobility), and Pathfinder (open-source macOS file manager).',
+    'Andiamo Tech builds software that solves real, everyday problems for people, businesses, and communities. Four products: Velocity (trend intelligence), Academy (homeschool platform), Andiamo (community mobility), and Pathfinder (open-source macOS file manager).',
   openGraph: {
-    title: `${COMPANY.shortName}`,
+    title: `${COMPANY.shortName} — Building software to better the world`,
     description:
-      'A Delaware PBC building Velocity, Academy, Andiamo, and Pathfinder, tools that respect their users.',
+      'Four products that directly support people and solve problems businesses and communities face every day.',
     type: 'website',
     siteName: COMPANY.shortName,
     url: `https://${COMPANY.domain}`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: COMPANY.shortName,
-    description: 'A Delaware PBC building four products that respect their users.',
+    title: `${COMPANY.shortName} — Building software to better the world`,
+    description: 'Four products that solve real, everyday problems for people and communities.',
   },
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
@@ -39,9 +39,15 @@ const orgJsonLd = {
   logo: `https://${COMPANY.domain}/brand/logo-mark.svg`,
   email: COMPANY.supportEmail,
   foundingDate: String(COMPANY.founded),
+  slogan: COMPANY.motto,
   description:
-    'A Delaware Public Benefit Corporation building Velocity, Academy, Andiamo, and Pathfinder.',
-  address: { '@type': 'PostalAddress', addressRegion: 'WA', addressCountry: 'US' },
+    'Andiamo Tech builds software that solves real, everyday problems: Velocity, Academy, Andiamo, and Pathfinder.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sedro-Woolley',
+    addressRegion: 'WA',
+    addressCountry: 'US',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
