@@ -33,6 +33,18 @@ export function ProductShowcase() {
               {/* copy */}
               <div className={flip ? 'lg:order-2' : ''}>
                 <div className="flex items-center gap-3 mb-4">
+                  {/* Product brand mark on the product surface (not site chrome) */}
+                  {p.brandMark && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={p.brandMark}
+                      alt=""
+                      aria-hidden="true"
+                      width={28}
+                      height={28}
+                      className="w-7 h-7 rounded-lg flex-shrink-0"
+                    />
+                  )}
                   <span
                     className="text-[11px] font-bold uppercase tracking-[0.25em]"
                     style={{ color: p.accent }}
@@ -54,6 +66,12 @@ export function ProductShowcase() {
                 <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-4">
                   {p.tagline}
                 </h3>
+
+                {p.brandTease && (
+                  <p className="text-sm font-medium mb-4" style={{ color: p.accent }}>
+                    {p.brandTease}
+                  </p>
+                )}
                 <p className="text-base text-slate-400 leading-relaxed mb-5">{p.valueProp}</p>
 
                 <ul className="space-y-2 text-sm text-slate-300 mb-7">

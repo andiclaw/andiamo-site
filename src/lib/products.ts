@@ -13,6 +13,14 @@ export interface Product {
   audience: string;
   /** How the product helps at three scales. Drives the impact section. */
   impact: { person: string; community: string; world: string };
+  /**
+   * Optional product brand mark, shown on this product's surfaces only (not in
+   * the site chrome, which stays the corporate Andiamo Tech logo). Path under
+   * /public. Per ACA-BRAND-ASSET-SYNC: product mark on product surfaces only.
+   */
+  brandMark?: string;
+  /** Optional one-line brand/story tease shown under the product name. */
+  brandTease?: string;
 }
 
 export const PRODUCTS: Product[] = [
@@ -53,9 +61,11 @@ export const PRODUCTS: Product[] = [
     ],
     url: 'https://academy.andiamo.tech',
     status: 'live',
-    accent: '#8B5CF6',
+    accent: '#6330FF',
     licenseLine: 'Closed source · per-family subscription',
     audience: 'Homeschool parents, microschools, and tutoring co-ops.',
+    brandMark: '/brand/andaro/concepts/sleek-purple-no-eyes-bare.svg',
+    brandTease: 'Andaro: From Sparks to Stars, an Academy Story by Andiamo.',
     impact: {
       person: 'Gives a parent back the hours that compliance paperwork used to eat, so they can teach.',
       community: 'Lets microschools and co-ops run by the book without hiring an administrator to do it.',

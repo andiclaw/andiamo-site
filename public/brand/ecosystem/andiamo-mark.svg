@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Andiamo">
+  <defs>
+    <linearGradient id="andBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="andRoad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#andBg)"/>
+  <path d="M32 14 L50 50 L42 50 L38 42 L26 42 L22 50 L14 50 Z" fill="url(#andRoad)"/>
+  <path d="M32 26 L29 38 L35 38 Z" fill="#16a34a"/>
+  <line x1="32" y1="32" x2="32" y2="35" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="32" cy="13" r="3.4" fill="#fbbf24"/>
+  <circle cx="32" cy="13" r="1.4" fill="#0f172a"/>
+</svg>

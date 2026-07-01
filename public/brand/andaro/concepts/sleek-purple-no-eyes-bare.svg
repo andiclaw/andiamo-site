@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><defs>
+    <linearGradient id="rail" x1="250" y1="820" x2="620" y2="170" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4A21E6"/><stop offset="0.36" stop-color="#6330FF"/><stop offset="0.58" stop-color="#854BFF"/><stop offset="0.82" stop-color="#B17BFF"/><stop offset="1" stop-color="#E3C8FF"/></linearGradient>
+    <linearGradient id="bridge" x1="345" y1="568" x2="680" y2="568" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5225D8"/><stop offset="0.56" stop-color="#7942FF"/><stop offset="1" stop-color="#B98DFF"/></linearGradient>
+    <filter id="markGlow" x="-18%" y="-18%" width="136%" height="136%"><feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#8B5CFF" flood-opacity="0.20"/></filter>
+    <filter id="tileShadow" x="-12%" y="-10%" width="124%" height="130%"><feDropShadow dx="0" dy="34" stdDeviation="34" flood-color="#000" flood-opacity="0.32"/></filter>
+    <pattern id="microGrid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="2"/></pattern>
+  </defs><g filter="url(#markGlow)">
+    <path d="M338 525 C424 574 600 574 686 525 L662 594 C584 626 440 626 362 594 Z" fill="url(#bridge)" opacity="0.96"/>
+    <path d="M235 746 L458 218 C469 190 492 174 516 178 C538 182 552 203 541 229 L333 782 C325 804 306 818 282 818 L269 818 C241 818 224 790 235 746 Z" fill="url(#rail)"/>
+    <path d="M483 218 C495 190 519 174 543 178 C564 183 577 198 586 219 L789 746 C800 790 783 818 755 818 L742 818 C718 818 699 804 691 782 L483 218 Z" fill="url(#rail)"/>
+  </g></svg>
