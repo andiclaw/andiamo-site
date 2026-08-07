@@ -4,6 +4,11 @@ import { Reveal } from '@/components/reveal';
 import { SpectrumDots, SpectrumBar } from '@/components/spectrum-mark';
 import { COMPANY, PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
+import Constellation from '@/components/constellation/constellation';
+
+// Academy is the lane the company is pushing, so its CTA is sourced from the
+// product record rather than hardcoded, and cannot drift from the real URL.
+const ACADEMY_URL = PRODUCTS.find((p) => p.key === 'academy')!.url;
 
 export default function HomePage() {
   return (
@@ -58,6 +63,15 @@ export default function HomePage() {
 
         <Reveal delay={240}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10">
+            {/* Academy CTA above the fold at EQUAL weight to the general one, per
+                AND-TECH-ROOT-CONSTELLATION-001: both are btn-primary, so neither
+                reads as the subordinate choice. */}
+            <a
+              href={ACADEMY_URL}
+              className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary"
+            >
+              Start with Academy
+            </a>
             <Link href="#products" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary">
               See what we build
             </Link>
@@ -67,17 +81,20 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        {/* four-product legend */}
-        <Reveal delay={320}>
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            {PRODUCTS.map((p) => (
-              <a key={p.key} href="#products" className="focusable flex items-center gap-2 group">
-                <span className="w-2 h-2 rounded-full" style={{ background: p.accent }} />
-                <span className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">{p.name}</span>
-              </a>
-            ))}
-          </div>
-        </Reveal>
+        {/* The constellation replaces the old flat legend: same four products,
+            but each now carries its lifecycle badge and links straight through,
+            so a visitor can tell at a glance what they can actually use today
+            (AND-TECH-ROOT-CONSTELLATION-001).
+
+            Deliberately NOT wrapped in <Reveal>. Reveal starts at opacity 0 and
+            only reveals once its IntersectionObserver fires, so anything inside
+            it is invisible until JavaScript runs. That is fine for decorative
+            copy, but this card requires the constellation to be STATIC-FIRST:
+            the four products and their lifecycle badges must be visible and
+            clickable with no JavaScript at all. */}
+        <div className="mt-14">
+          <Constellation />
+        </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-6"><SpectrumBar className="opacity-40" /></div>
@@ -96,7 +113,7 @@ export default function HomePage() {
         <Reveal>
           <div className="max-w-2xl mb-16">
             <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">The products</span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, in production.</h2>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, each at its own stage.</h2>
             <p className="text-base text-slate-400 leading-relaxed">
               Each one lives at its own home and runs its own roadmap. Pick the one you came for, or look at all four.
             </p>
