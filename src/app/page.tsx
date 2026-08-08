@@ -5,10 +5,8 @@ import { SpectrumDots, SpectrumBar } from '@/components/spectrum-mark';
 import { COMPANY, PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
 import Constellation from '@/components/constellation/constellation';
+import JourneyHero from '@/components/hero/journey-hero';
 
-// Academy is the lane the company is pushing, so its CTA is sourced from the
-// product record rather than hardcoded, and cannot drift from the real URL.
-const ACADEMY_URL = PRODUCTS.find((p) => p.key === 'academy')!.url;
 
 export default function HomePage() {
   return (
@@ -39,62 +37,19 @@ export default function HomePage() {
         </a>
       </div>
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 sm:pt-24 pb-20 text-center">
-        <Reveal>
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-pill bg-white/[0.04] border hairline mb-8">
-            <SpectrumDots size={7} gap={5} />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-slate-300">{BRAND.eyebrow}</span>
-          </div>
-        </Reveal>
+      {/* ── Hero: the journey (AND-SITE-HERO-JOURNEY-BETA-001) ──────
+          One continuous trip corner to corner, with the tagline, the primary
+          beta CTA and the patent link centred over it. Replaces the previous
+          text-only hero; the constellation moves below, keeping its lifecycle
+          badges, which the card requires to stay. */}
+      <JourneyHero />
 
-        <Reveal delay={80}>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.05] max-w-4xl mx-auto">
-            Software that solves{' '}
-            <span className="spectrum-text">real, everyday</span> problems.
-          </h1>
-        </Reveal>
-
-        <Reveal delay={160}>
-          <p className="text-base sm:text-xl text-slate-400 max-w-2xl mx-auto mt-7 leading-relaxed">
-            {BRAND.subhead}
-          </p>
-        </Reveal>
-
-        <Reveal delay={240}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10">
-            {/* Academy CTA above the fold at EQUAL weight to the general one, per
-                AND-TECH-ROOT-CONSTELLATION-001: both are btn-primary, so neither
-                reads as the subordinate choice. */}
-            <a
-              href={ACADEMY_URL}
-              className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary"
-            >
-              Start with Academy
-            </a>
-            <Link href="#products" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary">
-              See what we build
-            </Link>
-            <Link href="/about" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-ghost">
-              About the company →
-            </Link>
-          </div>
-        </Reveal>
-
-        {/* The constellation replaces the old flat legend: same four products,
-            but each now carries its lifecycle badge and links straight through,
-            so a visitor can tell at a glance what they can actually use today
-            (AND-TECH-ROOT-CONSTELLATION-001).
-
-            Deliberately NOT wrapped in <Reveal>. Reveal starts at opacity 0 and
-            only reveals once its IntersectionObserver fires, so anything inside
-            it is invisible until JavaScript runs. That is fine for decorative
-            copy, but this card requires the constellation to be STATIC-FIRST:
-            the four products and their lifecycle badges must be visible and
-            clickable with no JavaScript at all. */}
-        <div className="mt-14">
-          <Constellation />
-        </div>
+      {/* The four products, each with its lifecycle badge. Retained from
+          AND-TECH-ROOT-CONSTELLATION-001: the badges and the "each at its own
+          stage" framing stay, they simply now sit under the journey rather than
+          being the hero themselves. */}
+      <section className="max-w-5xl mx-auto px-6 pt-16 pb-4">
+        <Constellation />
       </section>
 
       <div className="max-w-6xl mx-auto px-6"><SpectrumBar className="opacity-40" /></div>
