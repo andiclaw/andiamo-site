@@ -4,6 +4,9 @@ import { Reveal } from '@/components/reveal';
 import { SpectrumDots, SpectrumBar } from '@/components/spectrum-mark';
 import { COMPANY, PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
+import Constellation from '@/components/constellation/constellation';
+import JourneyHero from '@/components/hero/journey-hero';
+
 
 export default function HomePage() {
   return (
@@ -34,50 +37,19 @@ export default function HomePage() {
         </a>
       </div>
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 sm:pt-24 pb-20 text-center">
-        <Reveal>
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-pill bg-white/[0.04] border hairline mb-8">
-            <SpectrumDots size={7} gap={5} />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-slate-300">{BRAND.eyebrow}</span>
-          </div>
-        </Reveal>
+      {/* ── Hero: the journey (AND-SITE-HERO-JOURNEY-BETA-001) ──────
+          One continuous trip corner to corner, with the tagline, the primary
+          beta CTA and the patent link centred over it. Replaces the previous
+          text-only hero; the constellation moves below, keeping its lifecycle
+          badges, which the card requires to stay. */}
+      <JourneyHero />
 
-        <Reveal delay={80}>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.05] max-w-4xl mx-auto">
-            Software that solves{' '}
-            <span className="spectrum-text">real, everyday</span> problems.
-          </h1>
-        </Reveal>
-
-        <Reveal delay={160}>
-          <p className="text-base sm:text-xl text-slate-400 max-w-2xl mx-auto mt-7 leading-relaxed">
-            {BRAND.subhead}
-          </p>
-        </Reveal>
-
-        <Reveal delay={240}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10">
-            <Link href="#products" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-primary">
-              See what we build
-            </Link>
-            <Link href="/about" className="focusable px-7 py-3.5 rounded-pill text-sm font-semibold btn-ghost">
-              About the company →
-            </Link>
-          </div>
-        </Reveal>
-
-        {/* four-product legend */}
-        <Reveal delay={320}>
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            {PRODUCTS.map((p) => (
-              <a key={p.key} href="#products" className="focusable flex items-center gap-2 group">
-                <span className="w-2 h-2 rounded-full" style={{ background: p.accent }} />
-                <span className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">{p.name}</span>
-              </a>
-            ))}
-          </div>
-        </Reveal>
+      {/* The four products, each with its lifecycle badge. Retained from
+          AND-TECH-ROOT-CONSTELLATION-001: the badges and the "each at its own
+          stage" framing stay, they simply now sit under the journey rather than
+          being the hero themselves. */}
+      <section className="max-w-5xl mx-auto px-6 pt-16 pb-4">
+        <Constellation />
       </section>
 
       <div className="max-w-6xl mx-auto px-6"><SpectrumBar className="opacity-40" /></div>
@@ -96,7 +68,7 @@ export default function HomePage() {
         <Reveal>
           <div className="max-w-2xl mb-16">
             <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">The products</span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, in production.</h2>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, each at its own stage.</h2>
             <p className="text-base text-slate-400 leading-relaxed">
               Each one lives at its own home and runs its own roadmap. Pick the one you came for, or look at all four.
             </p>
