@@ -49,7 +49,7 @@ export default function JourneyHero() {
 
         <h1 className="text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
           One trip. Every mode.{' '}
-          <span className="spectrum-text">All the way home.</span>
+          <span className="text-emerald-300">All the way home.</span>
         </h1>
 
         <p className="mt-6 max-w-xl text-balance text-base leading-relaxed text-slate-300 sm:text-lg">

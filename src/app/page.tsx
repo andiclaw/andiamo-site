@@ -6,48 +6,27 @@ import { COMPANY, PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
 import Constellation from '@/components/constellation/constellation';
 import JourneyHero from '@/components/hero/journey-hero';
+import HeroSwitcher from '@/components/hero-switcher/hero-switcher';
 
 
 export default function HomePage() {
   return (
     <div className="relative overflow-x-hidden">
-      {/* Ambient backdrop */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div
-          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[900px] rounded-full opacity-50"
-          style={{
-            background:
-              'radial-gradient(ellipse at center, rgba(99,102,241,0.14) 0%, rgba(34,211,238,0.06) 35%, transparent 68%)',
-          }}
-        />
-        <div
-          className="absolute top-[55%] right-[-12%] w-[600px] h-[600px] rounded-full opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%)' }}
-        />
-      </div>
+      {/* ── Top screen: the app switcher IS the hero (AND-SITE-HERO-SWITCHER-3D-001).
+          Leads with app.andiamo.tech (item 1), sits at the very top (item 3),
+          3D floating cards that glow their own colour on hover (item 4), static
+          depth with no drifting debris (item 5), real app captures (item 6). */}
+      <HeroSwitcher />
 
-      {/* Rideshare deflection: most legacy andiamo.tech traffic wants the app */}
-      <div className="max-w-6xl mx-auto px-6 pt-6">
-        <a
-          href="https://app.andiamo.tech"
-          className="focusable flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5 rounded-pill bg-emerald-500/[0.06] border border-emerald-500/20 text-xs sm:text-sm text-emerald-200 hover:bg-emerald-500/[0.10] hover:border-emerald-500/40 transition-all text-center"
-        >
-          <span className="opacity-80">Looking for the Andiamo rideshare app?</span>
-          <span className="font-semibold text-emerald-300">app.andiamo.tech →</span>
-        </a>
-      </div>
-
-      {/* ── Hero: the journey (AND-SITE-HERO-JOURNEY-BETA-001) ──────
-          One continuous trip corner to corner, with the tagline, the primary
-          beta CTA and the patent link centred over it. Replaces the previous
-          text-only hero; the constellation moves below, keeping its lifecycle
-          badges, which the card requires to stay. */}
+      {/* ── The mobility journey (AND-SITE-HERO-JOURNEY-BETA-001) ──────
+          One continuous trip corner to corner with the beta CTA. It moves below
+          the switcher: the switcher answers "what can I use", the journey tells
+          the Andiamo mobility story for those who want it. */}
       <JourneyHero />
 
       {/* The four products, each with its lifecycle badge. Retained from
           AND-TECH-ROOT-CONSTELLATION-001: the badges and the "each at its own
-          stage" framing stay, they simply now sit under the journey rather than
-          being the hero themselves. */}
+          stage" framing stay. */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-4">
         <Constellation />
       </section>
@@ -57,7 +36,7 @@ export default function HomePage() {
       {/* ── Mission strip ────────────────────────────────────── */}
       <section className="max-w-4xl mx-auto px-6 py-24 text-center">
         <Reveal>
-          <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">What we do</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-300 font-bold">What we do</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3 mb-5">{BRAND.missionTitle}</h2>
           <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">{BRAND.missionLead}</p>
         </Reveal>
@@ -67,7 +46,7 @@ export default function HomePage() {
       <section id="products" className="max-w-6xl mx-auto px-6 py-12 scroll-mt-20">
         <Reveal>
           <div className="max-w-2xl mb-16">
-            <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">The products</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-300 font-bold">The products</span>
             <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">Four products, each at its own stage.</h2>
             <p className="text-base text-slate-400 leading-relaxed">
               Each one lives at its own home and runs its own roadmap. Pick the one you came for, or look at all four.
@@ -81,7 +60,7 @@ export default function HomePage() {
       <section className="max-w-6xl mx-auto px-6 py-24">
         <Reveal>
           <div className="max-w-2xl mb-14">
-            <span className="text-[10px] uppercase tracking-[0.3em] spectrum-text font-bold">Why it matters</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-300 font-bold">Why it matters</span>
             <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">{BRAND.impactTitle}</h2>
             <p className="text-base text-slate-400 leading-relaxed">{BRAND.impactLead}</p>
           </div>
@@ -160,7 +139,7 @@ export default function HomePage() {
       <section className="max-w-6xl mx-auto px-6 py-20">
         <Reveal>
           <div className="relative rounded-3xl border hairline-bold overflow-hidden p-10 sm:p-16 text-center">
-            <div className="absolute inset-0 -z-10 spectrum-bg-animated opacity-[0.08]" />
+            <div className="absolute inset-0 -z-10 opacity-[0.10]" />
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Start with one, or all four.</h2>
             <p className="text-base text-slate-400 max-w-xl mx-auto mb-8">
               Every product is free to try. If you find something we should fix, whether a bug, a vulnerability, or a takedown, one form routes it to the right team.

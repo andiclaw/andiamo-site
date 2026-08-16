@@ -49,7 +49,9 @@ export const ecosystemApps: EcosystemApp[] = [
   {
     key: 'velocity',
     title: 'Velocity',
-    tagline: 'Trend intelligence',
+    // VL-REBRAND-INTEL-HUMANS-AGENTS-001: velocity-agent owns this string;
+    // "Trend intelligence" is retired for "Intel for humans and agents".
+    tagline: 'Intel for humans and agents',
     href: resolveHref('VELOCITY', 'https://velocity.andiamo.tech', 3003),
     port: 3003,
     icon: 'V',

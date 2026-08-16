@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { PRODUCTS } from '@/lib/products';
 import { lifecycleFor } from '@/lib/lifecycle';
-import ConstellationDepth from './constellation-depth';
 
 /**
  * The root constellation (AND-TECH-ROOT-CONSTELLATION-001).
@@ -47,10 +46,11 @@ const TONE_CLASSES: Record<string, string> = {
 export default function Constellation() {
   return (
     <div className="relative mx-auto w-full max-w-3xl">
-      {/* Reserve the aspect ratio so nothing reflows when the depth layer mounts. */}
+      {/* AND-SITE-HERO-SWITCHER-3D-001 item 5: the drifting three.js starfield
+          (ConstellationDepth) was removed. Brendan: "no floating items drifting
+          through the space. Depth, not debris." The static SVG constellation
+          below is structural depth and stays. */}
       <div className="relative aspect-[4/3] sm:aspect-[16/11]">
-        <ConstellationDepth />
-
         {/* Connectors. aria-hidden: the relationships they imply are decorative,
             and the node list below is the real structure. */}
         <svg

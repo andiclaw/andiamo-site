@@ -21,18 +21,29 @@ export interface Product {
   brandMark?: string;
   /** Optional one-line brand/story tease shown under the product name. */
   brandTease?: string;
+  /**
+   * Real capture of the live product, shown on the hero switcher and product
+   * rows. `capture` is the basename under /brand/captures; we serve
+   * <basename>.avif -> .webp -> .jpg. These are real screenshots of the live
+   * public surface (AND-SITE-HERO-SWITCHER-3D-001, item 6), re-taken whenever
+   * the app changes. A product with no reachable public surface omits this and
+   * falls back to its code-accurate mockup.
+   */
+  capture?: string;
+  /** What the capture actually is, for honesty + alt text. */
+  captureCaption?: string;
 }
 
 export const PRODUCTS: Product[] = [
   {
     key: 'velocity',
     name: 'Velocity',
-    tagline: 'Trend intelligence the moment a story breaks.',
+    tagline: 'Intel for humans and agents, the moment a story breaks.',
     valueProp:
       'A real-time intel feed that scores momentum across security, markets, news, weather, and your own watchlists, so you see a story closer to minute one than hour six.',
     bullets: [
       '43 sources refreshed every 15 minutes',
-      '0–100 composite score per story (volume, reach, recency, trust)',
+      '0 to 100 composite score per story (volume, reach, recency, trust)',
       'Personal radar, watchlists, push alerts',
       'API + MCP + SDK for the agents that work for you',
     ],
@@ -41,6 +52,8 @@ export const PRODUCTS: Product[] = [
     accent: '#22D3EE',
     licenseLine: 'Closed source · subscription tiers from $0/mo',
     audience: 'Traders, security teams, founders, journalists, and AI agents.',
+    capture: 'velocity',
+    captureCaption: 'The live Velocity home at velocity.andiamo.tech.',
     impact: {
       person: 'Cuts through the noise so you act on what matters instead of doomscrolling for it.',
       community: 'Gives local teams and newsrooms an early read on threats, weather, and emergencies in their area.',
@@ -66,6 +79,8 @@ export const PRODUCTS: Product[] = [
     audience: 'Homeschool parents, microschools, and tutoring co-ops.',
     brandMark: '/brand/andaro/concepts/sleek-purple-no-eyes-bare.svg',
     brandTease: 'Andaro: From Sparks to Stars, an Academy Story by Andiamo.',
+    capture: 'academy',
+    captureCaption: 'The live Academy home at academy.andiamo.tech.',
     impact: {
       person: 'Gives a parent back the hours that compliance paperwork used to eat, so they can teach.',
       community: 'Lets microschools and co-ops run by the book without hiring an administrator to do it.',
@@ -89,6 +104,8 @@ export const PRODUCTS: Product[] = [
     accent: '#22C55E',
     licenseLine: 'Closed source · open API once GA',
     audience: 'Riders, fleet operators, transit authorities, and cities.',
+    capture: 'andiamo',
+    captureCaption: 'The live Andiamo Rides beta at app.andiamo.tech.',
     impact: {
       person: 'Gets someone without a car to work, school, or the doctor, with a fare they can actually afford.',
       community: 'Keeps a share of every fare in the city of origin and funds subsidized rides for neighbors who need them.',

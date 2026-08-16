@@ -35,8 +35,10 @@ export function SpectrumDots({ size = 10, gap = 8 }: { size?: number; gap?: numb
 }
 
 /**
- * A thin animated spectrum bar, used as a section divider / signature accent.
+ * A thin section divider. Was an animated rainbow bar; per
+ * AND-SITE-HERO-SWITCHER-3D-001 item 2 ("kill the rainbow gradient") it is now
+ * a single static hairline.
  */
 export function SpectrumBar({ className = '' }: { className?: string }) {
-  return <div className={`h-px w-full spectrum-bg-animated ${className}`} aria-hidden />;
+  return <div className={`h-px w-full bg-white/10 ${className}`} aria-hidden />;
 }

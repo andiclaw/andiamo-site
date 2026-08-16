@@ -7,13 +7,13 @@ import { COMPANY } from '@/lib/company';
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${COMPANY.domain}`),
   title: {
-    default: `${COMPANY.shortName} — Building software to better the world`,
+    default: `${COMPANY.shortName}: Building software to better the world`,
     template: `%s · ${COMPANY.shortName}`,
   },
   description:
-    'Andiamo Tech builds software that solves real, everyday problems for people, businesses, and communities. Four products: Velocity (trend intelligence), Academy (homeschool platform), Andiamo (community mobility), and Pathfinder (open-source macOS file manager).',
+    'Andiamo Tech builds software that solves real, everyday problems for people, businesses, and communities. Four products: Velocity (intel for humans and agents), Academy (homeschool platform), Andiamo (community mobility), and Pathfinder (open-source macOS file manager).',
   openGraph: {
-    title: `${COMPANY.shortName} — Building software to better the world`,
+    title: `${COMPANY.shortName}: Building software to better the world`,
     description:
       'Four products that directly support people and solve problems businesses and communities face every day.',
     type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${COMPANY.shortName} — Building software to better the world`,
+    title: `${COMPANY.shortName}: Building software to better the world`,
     description: 'Four products that solve real, everyday problems for people and communities.',
   },
   icons: {
