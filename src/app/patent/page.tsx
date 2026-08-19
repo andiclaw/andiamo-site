@@ -111,7 +111,7 @@ export default function PatentPage() {
         <section className="space-y-5 text-slate-300 leading-relaxed mb-12">
           <h2 className="text-xl font-bold text-white">Web2 by default. dApp on request.</h2>
           <p className="text-sm">
-            The patent’s dual-mode design is the production deployment choice we made. The default experience is a conventional rideshare app: open it, request a ride, pay with the card on file. An embedded custodial wallet is created silently on registration; the blockchain runs in the background.
+            The patent’s dual-mode design is the production deployment choice we made. The default experience is an ordinary ride app: open it, request a ride, pay with the card on file. An embedded custodial wallet is created silently on registration; the blockchain runs in the background.
           </p>
           <p className="text-sm">
             Users who want a true dApp experience connect their own wallet (MetaMask, WalletConnect, hardware) and the app becomes a full dApp, with bids, settlements, and governance votes all signed from their wallet. Both modes are interchangeable; a user can switch between them without losing trip history or credits.
@@ -123,7 +123,7 @@ export default function PatentPage() {
         <section className="space-y-3 mb-12">
           <h2 className="text-xl font-bold text-white">What this means for the rest of {COMPANY.shortName}.</h2>
           <p className="text-sm text-slate-300 leading-relaxed">
-            The patent applies specifically to <strong>Andiamo</strong>, our zone-mobility product at <code className="text-emerald-300">app.andiamo.tech</code>. Velocity, Academy, and Pathfinder are conventional software with no patent encumbrance.
+            The patent applies specifically to <strong>Rides</strong>, our zone-mobility product at <code className="text-emerald-300">rides.andiamo.tech</code>. Velocity, Academy, and Pathfinder are conventional software with no patent encumbrance.
           </p>
           <p className="text-sm text-slate-300 leading-relaxed">
             If you operate a mobility business (fleet, ride-hail, micromobility, or transit) and any of the mechanisms above describe what you do or plan to do, get in touch. Email <a href={`mailto:${COMPANY.supportEmail}`} className="text-cyan-300 hover:text-cyan-200">{COMPANY.supportEmail}</a> with the subject “Patent licensing inquiry.”

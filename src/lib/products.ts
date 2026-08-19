@@ -89,7 +89,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     key: 'andiamo',
-    name: 'Andiamo',
+    // AND-REBRAND-GO-TO-RIDES-001: the PRODUCT is Rides; Andiamo is the company.
+    name: 'Rides',
     tagline: 'Mobility, settled on rails the patent covers.',
     valueProp:
       'A zone-mobility platform where riders post trips, operators bid, and a smart contract splits each fare across the operator, the city, a helper fund for subsidized rides, and platform maintenance.',
@@ -99,13 +100,13 @@ export const PRODUCTS: Product[] = [
       'Built-in helper program for verified low-income riders',
       'Web2 by default, dApp-ready when you bring your own wallet',
     ],
-    url: 'https://app.andiamo.tech',
+    url: 'https://rides.andiamo.tech',
     status: 'building',
     accent: '#22C55E',
     licenseLine: 'Closed source · open API once GA',
     audience: 'Riders, fleet operators, transit authorities, and cities.',
     capture: 'andiamo',
-    captureCaption: 'The live Andiamo Rides beta at app.andiamo.tech.',
+    captureCaption: 'The live Rides beta at rides.andiamo.tech.',
     impact: {
       person: 'Gets someone without a car to work, school, or the doctor, with a fare they can actually afford.',
       community: 'Keeps a share of every fare in the city of origin and funds subsidized rides for neighbors who need them.',

@@ -23,7 +23,7 @@ export function Footer() {
           <ul className="space-y-2 text-slate-400">
             <li><a href="https://velocity.andiamo.tech" className="focusable hover:text-cyan-300 transition-colors">Velocity</a></li>
             <li><a href="https://academy.andiamo.tech" className="focusable hover:text-violet-300 transition-colors">Academy</a></li>
-            <li><a href="https://app.andiamo.tech" className="focusable hover:text-emerald-300 transition-colors">Andiamo</a></li>
+            <li><a href="https://rides.andiamo.tech" className="focusable hover:text-emerald-300 transition-colors">Rides</a></li>
             <li><a href="https://github.com/andiclaw/pathfinder" className="focusable hover:text-amber-300 transition-colors">Pathfinder</a></li>
           </ul>
         </div>

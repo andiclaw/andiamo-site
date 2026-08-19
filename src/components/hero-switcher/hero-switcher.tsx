@@ -10,7 +10,7 @@ import { ProductCapture } from './product-capture';
  *
  * Brendan's six items:
  *  1. Lead with the product a visitor can use, not the holding company. The
- *     order puts app.andiamo.tech (Andiamo Rides) first as the large lead card.
+ *     order puts rides.andiamo.tech (Rides) first as the large lead card.
  *  2. No rainbow gradient text. The heading is one colour; each product's own
  *     colour appears only where it means something (its card, its orb).
  *  3. The switcher sits at the very top of the page.
@@ -26,7 +26,7 @@ import { ProductCapture } from './product-capture';
  * only client behaviour is the hover lift, which is progressive.
  */
 
-// Lead with the usable product. Andiamo Rides (app.andiamo.tech) first, then
+// Lead with the usable product. Rides (rides.andiamo.tech) first, then
 // the rest in stage order.
 const ORDER: Product['key'][] = ['andiamo', 'academy', 'velocity', 'pathfinder'];
 const ORDERED = ORDER.map((k) => PRODUCTS.find((p) => p.key === k)!).filter(Boolean);

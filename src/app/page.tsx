@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <div className="relative overflow-x-hidden">
       {/* ── Top screen: the app switcher IS the hero (AND-SITE-HERO-SWITCHER-3D-001).
-          Leads with app.andiamo.tech (item 1), sits at the very top (item 3),
+          Leads with rides.andiamo.tech (item 1), sits at the very top (item 3),
           3D floating cards that glow their own colour on hover (item 4), static
           depth with no drifting debris (item 5), real app captures (item 6). */}
       <HeroSwitcher />

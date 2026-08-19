@@ -16,13 +16,14 @@ import { PRODUCTS } from '@/lib/products';
  * no JavaScript at all, and the three.js layer only adds motion along the same
  * route and draws no text.
  *
- * The beta button wires to the EXISTING beta path, `app.andiamo.tech`, which is
+ * The beta button wires to the beta path, `rides.andiamo.tech` (AND-REBRAND-GO-TO-RIDES-001;
+ * `app.andiamo.tech` 301s there), which is
  * the closed-beta landing with the real waitlist form, its one-line privacy
  * notice and its unchecked consent box. No new collector was invented here, and
  * this site does not gather addresses of its own.
  */
 
-const BETA_URL = 'https://app.andiamo.tech';
+const BETA_URL = 'https://rides.andiamo.tech';
 
 /**
  * CONSTRAINT COLLISION, resolved deliberately and flagged rather than dropped.

@@ -59,14 +59,15 @@ export const ecosystemApps: EcosystemApp[] = [
     status: 'active',
   },
   {
-    // The Andiamo mobility product is branded "Go" on its own surfaces; the
-    // parent company / ecosystem stays Andiamo (this apex site).
+    // AND-REBRAND-GO-TO-RIDES-001 (DECISIONS 2026-08-18): the mobility product
+    // is RIDES, in the same house pattern as Academy and Velocity. The parent
+    // company / ecosystem stays Andiamo (this apex site).
     key: 'andiamo',
-    title: 'Go',
+    title: 'Rides',
     tagline: 'Community mobility',
-    href: resolveHref('ANDIAMO', 'https://app.andiamo.tech', 3007),
+    href: resolveHref('ANDIAMO', 'https://rides.andiamo.tech', 3007),
     port: 3007,
-    icon: 'G',
+    icon: 'R',
     accentColor: '#22C55E',
     status: 'active',
   },
