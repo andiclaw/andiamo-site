@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s · ${COMPANY.shortName}`,
   },
   description:
-    'Andiamo Tech builds software that solves real, everyday problems for people, businesses, and communities. Four products: Velocity (intel for humans and agents), Academy (homeschool platform), Andiamo (community mobility), and Pathfinder (open-source macOS file manager).',
+    'Andiamo Tech builds software that solves real, everyday problems for people, businesses, and communities. Four products: Velocity (intel for humans and agents), Academy (homeschool platform), Rides (community mobility), and Pathfinder (open-source macOS file manager).',
   openGraph: {
     title: `${COMPANY.shortName}: Building software to better the world`,
     description:

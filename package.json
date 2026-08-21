@@ -2,14 +2,16 @@
   "name": "andiamo-site",
   "version": "0.1.0",
   "private": true,
-  "description": "andiamo.tech apex — corporate site for Andiamo Tech, Inc. (PBC). Umbrella landing for Academy, Andiamo, Velocity, and Pathfinder.",
+  "description": "andiamo.tech apex \u2014 corporate site for Andiamo Tech, Inc. (PBC). Umbrella landing for Academy, Andiamo, Velocity, and Pathfinder.",
   "scripts": {
     "dev": "next dev -p 3019",
     "build": "next build",
     "start": "next start -p 3019",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check:prod-headers": "node scripts/check-prod-headers.mjs",
+    "check:copy": "node scripts/check-copy.mjs"
   },
   "dependencies": {
     "next": "^15.5.18",
