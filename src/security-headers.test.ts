@@ -7,13 +7,13 @@
  * nothing else would notice their absence until a scan.
  */
 import { describe, it, expect } from 'vitest';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// next.config.js is plain JS; its module shape is declared in
+// src/next-config.d.ts so this import is typed rather than implicit `any`
+// (which would trip `noImplicitAny` under `tsc --noEmit`).
 import nextConfig from '../next.config.js';
 
-type HeaderEntry = { key: string; value: string };
-
 async function headerMap(): Promise<Record<string, string>> {
-  const groups = await (nextConfig as { headers: () => Promise<Array<{ headers: HeaderEntry[] }>> }).headers();
+  const groups = await nextConfig.headers();
   const out: Record<string, string> = {};
   for (const g of groups) for (const h of g.headers) out[h.key.toLowerCase()] = h.value;
   return out;
