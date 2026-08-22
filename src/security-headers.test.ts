@@ -31,12 +31,12 @@ describe('baseline security headers', () => {
     expect(h['strict-transport-security']).not.toContain('preload');
   });
 
-  it('HSTS is STAGED, not yet the fleet-standard year', async () => {
-    // Measured 2026-08-19: app/academy/velocity already run max-age=31536000.
-    // The apex starts short so a first-deploy mistake is not a year long.
-    // Ramp to 31536000 once the live apex is verified serving this.
+  it('HSTS is the fleet-standard one year, ramped after live verification', async () => {
+    // Staged at max-age=86400 for the first deploy, then RAMPED to 31536000 on
+    // 2026-08-21 once `check:prod-headers` passed exit 0 against the live apex,
+    // www and app. Now matches app/academy/velocity.
     const h = await headerMap();
-    expect(h['strict-transport-security']).toContain('max-age=86400');
+    expect(h['strict-transport-security']).toContain('max-age=31536000');
   });
 
   it('keeps the pre-existing four headers', async () => {

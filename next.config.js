@@ -19,17 +19,18 @@ const nextConfig = {
     // also a small benefit for rides.andiamo.tech, which will be forced to
     // HTTPS from its first day.
     //
-    // STAGED max-age, per the card. One day, not one year, for the FIRST
-    // deployment: HSTS is a promise a browser remembers, so if anything about
-    // the apex TLS or the www redirect chain is subtly wrong, a year-long
-    // commitment makes the mistake last a year for every returning visitor.
-    // RAMP TO 31536000 (matching the other three hosts) once the live apex has
-    // been verified serving this correctly. See SITE-SEC-BASELINE-HEADERS-001.
+    // RAMPED to the fleet-standard one year on 2026-08-21, after the staged
+    // one-day value (max-age=86400) was verified serving correctly on the live
+    // apex + www: `check:prod-headers` returned exit 0 against andiamo.tech,
+    // www.andiamo.tech and app.andiamo.tech, and the www->apex redirect chain
+    // held. Now matches app/academy/velocity (all max-age=31536000). The staged
+    // step existed so a first-deploy TLS or redirect mistake could not become a
+    // year-long promise every returning browser remembers; that risk is retired.
     //
     // NO `preload`. Submission to the browser preload list is effectively
     // irreversible and is a deliberate decision for Brendan, not a side effect
     // of a header card.
-    const HSTS_STAGED = 'max-age=86400; includeSubDomains';
+    const HSTS = 'max-age=31536000; includeSubDomains';
 
     // The storefront loads NOTHING external: dependencies are next, react,
     // three and postmark (server-side only), and the only external URLs in src
@@ -66,7 +67,7 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'Strict-Transport-Security', value: HSTS_STAGED },
+          { key: 'Strict-Transport-Security', value: HSTS },
           { key: 'Content-Security-Policy', value: CSP },
         ],
       },
