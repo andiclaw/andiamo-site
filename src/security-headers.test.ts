@@ -83,6 +83,9 @@ describe('house copy rule', () => {
     const src = readFileSync(new URL('./app/layout.tsx', import.meta.url), 'utf8');
     const metaBlock = src.slice(src.indexOf('export const metadata'), src.indexOf('export default'));
     expect(metaBlock.length).toBeGreaterThan(0);
-    expect(metaBlock).not.toContain('—');
+    // The em dash is written as its escape (U+2014) so this assertion does not
+    // itself trip the source half of scripts/check-copy.mjs, which scans for
+    // the literal character. Behaviourally identical.
+    expect(metaBlock).not.toContain('\u2014');
   });
 });
