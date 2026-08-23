@@ -9,3 +9,9 @@
 - Check `df -h /` BEFORE any operation that writes >1GB. STOP under 5G free and report, rather than
   starting an operation that can die mid-write.
 
+
+## Token ledger (standing return protocol — OPS-TOKEN-LEDGER-001)
+Every dispatch/return/review event writes ONE row to MC token_ledger:
+`INSERT INTO token_ledger (seat,model,event,tokens_k,task_id) VALUES ('<seat>','<model>','dispatch|return|review', NN, '<CARD-ID>');`
+plus the footer line `tokens: ~NNNk` in the return brief. Nothing more (scope fence: no triggers, no UI, no rollups).
+
