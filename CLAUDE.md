@@ -48,6 +48,14 @@ behavior-level test **proven to FAIL against the pre-change code** (stash-and-ru
 classes. (Both CRITs shipped with fully green suites: the tests asserted the shape of a Prisma query
 or the detector's own regex list, so **the test encoded the bug**.)
 
+### OPS-CROSS-MODEL-REVIEW-ROUTE-001 — fail-closed reviewer route
+The operative route is `shared/business-thread/CROSS-MODEL-REVIEW-ROUTE.md`. The lead, not the
+author, dispatches one independent reviewer and records a durable verdict for the **exact current
+base/head/diff**. `review-seat-r2` is mandatory for child-safety acceptance; `gpt-dev-build-2` may
+review security-sensitive code only when its actual model family differs from every author. An author,
+implementation contributor, or same-model-family seat cannot review the change. Absent, mismatched,
+stale, or non-accept review blocks merge and close; capacity pressure escalates, never self-certifies.
+
 ### OPS-GATES-RUN-ALL-TARGETS-001 — gates must collect everything
 Rust gates run `cargo clippy --all-targets` and `cargo test --all-targets`. Node gates run the
 full-suite script, **never a bare glob** (`tests/*.test.ts` misses subdirectories, so fixes ship
