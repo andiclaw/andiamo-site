@@ -16,7 +16,7 @@
 .company p { max-width: 600px; line-height: 1.7; }
 .links { display: flex; gap: 28px; flex-wrap: wrap; }
 @media (max-width: 700px) {
-  .why { padding: 40px 24px 0; }
+  .why { padding: 24px 24px 0; }
   .why > h2 { font-size: 30px; margin-bottom: 16px; }
   .reason { grid-template-columns: 1fr; gap: 24px; padding: 20px 0 40px; }
   .reason:nth-of-type(even) .art { order: 0; }

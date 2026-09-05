@@ -1,114 +1,108 @@
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { createWorld } from './worlds';
 import type { SceneInput } from './interaction';
 
-/** Spheres share the semantic buttons' projected bounds; no remote assets. */
+/** Local authored space scene. Semantic controls remain the navigation authority. */
 export function mountScene(host: HTMLElement, stage: HTMLElement, input: SceneInput, lost: () => void): () => void {
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-  renderer.setClearColor(0x060b09, 0);
+  renderer.setClearColor(0x030610, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
   camera.position.z = 15;
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  const room = new RoomEnvironment();
-  const environment = pmrem.fromScene(room, .04);
-  scene.environment = environment.texture;
-  room.dispose(); pmrem.dispose();
-  scene.add(new THREE.AmbientLight(0xd6e8e3, .7));
-  const key = new THREE.PointLight(0xecfff6, 110, 40);
-  key.position.set(-4, 5, 7); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x84c7ff, 3);
-  rim.position.set(4, -2, 3); scene.add(rim);
-  const geometry = new THREE.SphereGeometry(1, 64, 40);
-  const ringGeometry = new THREE.TorusGeometry(1.13, .006, 6, 96);
-  const colors = [0x22bbd6, 0x8466ed, 0x31c47d, 0xe6b349];
-  const spheres = colors.map(color => {
-    const material = new THREE.MeshPhysicalMaterial({ color, metalness: .36, roughness: .15,
-      clearcoat: 1, clearcoatRoughness: .08, transmission: .18, thickness: 1.2,
-      ior: 1.42, envMapIntensity: 1.5 });
-    const sphere = new THREE.Mesh(geometry, material);
-    const ring = new THREE.Mesh(ringGeometry, new THREE.MeshBasicMaterial({ color, transparent: true, opacity: .38 }));
-    sphere.add(ring); scene.add(sphere);
-    return { sphere, material, ring };
+  scene.add(new THREE.AmbientLight(0x667aaa, .65));
+  const sun = new THREE.DirectionalLight(0xc7defa, 3.8);
+  sun.position.set(-5, 5, 4); scene.add(sun);
+  const rim = new THREE.DirectionalLight(0x5d9fce, 4);
+  rim.position.set(4, 1, -4); scene.add(rim);
+  const worlds = [0, 1, 2, 3].map(createWorld);
+  worlds.forEach(({ group }) => scene.add(group));
+  const dustGeometry = new THREE.PlaneGeometry(90, 50);
+  const dustMaterial = new THREE.ShaderMaterial({ depthWrite: false,
+    vertexShader: `varying vec2 uvSpace; void main(){ uvSpace=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+    fragmentShader: `varying vec2 uvSpace;
+      float wave(vec2 p){return sin(p.x*9.0+sin(p.y*6.0))*sin(p.y*7.0+cos(p.x*5.0));}
+      void main(){vec2 p=uvSpace*3.0; float dust=wave(p)*.5+wave(p*2.1)*.25+wave(p*4.3)*.125;
+      float band=exp(-pow((uvSpace.y-.55+(uvSpace.x-.5)*.4)*7.0,2.0));
+      vec3 color=vec3(.009,.015,.035)+vec3(.018,.032,.052)*band*max(.0,dust+.65);
+      gl_FragColor=vec4(color,1.0); }`,
+  });
+  const dust = new THREE.Mesh(dustGeometry, dustMaterial); dust.position.z = -22; scene.add(dust);
+  const skies = [0, 1, 2].map(layer => {
+    const geometry = new THREE.BufferGeometry(), points = new Float32Array(180 * 3);
+    for (let i = 0; i < 180; i++) {
+      points[i * 3] = Math.sin(i * 137.5 + layer * 3) * 17;
+      points[i * 3 + 1] = Math.cos(i * 39.7 + layer * 5) * 9;
+      points[i * 3 + 2] = -3 - layer * 4 - i % 3;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(points, 3));
+    const material = new THREE.PointsMaterial({ color: [0xd5dfef, 0x708bbc, 0x978bc1][layer], size: [.027, .025, .024][layer], transparent: true, opacity: [.7, .6, .5][layer] });
+    const sky = new THREE.Points(geometry, material); scene.add(sky); return sky;
   });
   const linkGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
-  const linkMaterial = new THREE.LineBasicMaterial({ color: colors[0], transparent: true, opacity: .35 });
+  const linkMaterial = new THREE.LineBasicMaterial({ color: 0x39747a, transparent: true, opacity: .35 });
   const link = new THREE.Line(linkGeometry, linkMaterial); scene.add(link);
-  // Deterministic sparse depth field, not customer/data markers.
-  const starsGeometry = new THREE.BufferGeometry();
-  const stars = new Float32Array(90 * 3);
-  for (let i = 0; i < 90; i++) {
-    stars[i * 3] = Math.sin(i * 137.5) * 12;
-    stars[i * 3 + 1] = Math.cos(i * 39.7) * 5;
-    stars[i * 3 + 2] = -3 - (i % 7);
-  }
-  starsGeometry.setAttribute('position', new THREE.BufferAttribute(stars, 3));
-  const starsMaterial = new THREE.PointsMaterial({ color: 0x9ebdb7, size: .025, transparent: true, opacity: .45 });
-  const sky = new THREE.Points(starsGeometry, starsMaterial); scene.add(sky);
-  const nodes = Array.from(stage.querySelectorAll<HTMLElement>('[data-node]'));
+  const anchors = Array.from(stage.querySelectorAll<HTMLElement>('[data-world-anchor]'));
   let width = 1, height = 1, frame = 0, dead = false, visible = true, previous = 0, elapsed = 0;
   function resize() {
-    width = stage.clientWidth; height = stage.clientHeight;
-    renderer.setSize(width, height);
-    camera.aspect = width / height; camera.updateProjectionMatrix();
+    width = host.clientWidth; height = host.clientHeight;
+    renderer.setSize(width, height); camera.aspect = width / height; camera.updateProjectionMatrix();
   }
   function tick(now: number) {
     frame = 0;
     if (dead || !visible || document.hidden) return;
     const dt = Math.min((now - previous) / 1000, .05); previous = now;
     if (!input.reduced) elapsed += dt;
-    const box = stage.getBoundingClientRect();
-    const viewHeight = 2 * Math.tan(THREE.MathUtils.degToRad(19)) * 15;
-    const viewWidth = viewHeight * camera.aspect;
-    key.position.x = -4 + (input.reduced ? 0 : input.x * 2);
-    sky.rotation.y = input.reduced ? 0 : Math.sin(elapsed * .05) * .025;
-    spheres.forEach(({ sphere, material, ring }, i) => {
-      const r = nodes[i].getBoundingClientRect();
-      sphere.position.set(((r.left + r.width / 2 - box.left) / width - .5) * viewWidth,
-        (.5 - (r.top + r.height / 2 - box.top) / height) * viewHeight, 0);
-      sphere.scale.setScalar(r.width / width * viewWidth * .46);
-      material.envMapIntensity = input.selected === i ? 2 : 1.25;
-      ring.rotation.set(1.05, .3 + i * .6, input.reduced ? .2 : elapsed * .08);
+    const box = host.getBoundingClientRect();
+    worlds.forEach(({ group, planet, structures }, i) => {
+      const r = anchors[i].getBoundingClientRect();
+      const z = [0, -2, -1, -3][i];
+      const viewHeight = 2 * Math.tan(THREE.MathUtils.degToRad(19)) * (15 - z);
+      const viewWidth = viewHeight * camera.aspect;
+      group.position.set(((r.left + r.width / 2 - box.left) / width - .5) * viewWidth,
+        (.5 - (r.top + r.height / 2 - box.top) / height) * viewHeight, z);
+      group.scale.setScalar(r.width / width * viewWidth * .47);
+      group.rotation.set(-.2, 0, [.15, -.3, -.18, .35][i]);
+      planet.rotation.y = structures.rotation.y = input.reduced ? .2 : .2 + elapsed * [.025, .018, .022, .012][i];
+    });
+    skies.forEach((sky, i) => {
+      sky.rotation.y = input.reduced ? 0 : Math.sin(elapsed * .03) * .006 * (i + 1) + input.x * .003 * (3 - i);
     });
     link.visible = input.selected >= 0;
     if (link.visible) {
       const detail = stage.querySelector<HTMLElement>('[data-detail]:not([hidden])');
-      if (detail) {
-        const r = detail.getBoundingClientRect();
+      const label = stage.querySelectorAll<HTMLElement>('[data-world-label]')[input.selected];
+      if (detail && label) {
+        const d = detail.getBoundingClientRect(), r = label.getBoundingClientRect();
+        const viewHeight = 2 * Math.tan(THREE.MathUtils.degToRad(19)) * 15;
         const points = linkGeometry.attributes.position as THREE.BufferAttribute;
-        const p = spheres[input.selected].sphere.position;
-        points.setXYZ(0, p.x, p.y - spheres[input.selected].sphere.scale.x, -.2);
-        points.setXYZ(1, 0, (.5 - (r.top - box.top - 8) / height) * viewHeight, -.2);
-        points.needsUpdate = true; linkMaterial.color.setHex(colors[input.selected]);
+        points.setXYZ(0, ((r.left + r.width / 2 - box.left) / width - .5) * viewHeight * camera.aspect, (.5 - (r.bottom - box.top + 5) / height) * viewHeight, 0);
+        points.setXYZ(1, ((d.left + d.width / 2 - box.left) / width - .5) * viewHeight * camera.aspect, (.5 - (d.top - box.top - 8) / height) * viewHeight, 0);
+        points.needsUpdate = true; linkMaterial.color.setHex(worlds[input.selected].palette.light);
       }
     }
-    renderer.render(scene, camera);
-    frame = requestAnimationFrame(tick);
+    renderer.render(scene, camera); frame = requestAnimationFrame(tick);
   }
   function resume() {
     stage.dataset.paused = String(document.hidden || !visible);
     if (document.hidden || !visible) { cancelAnimationFrame(frame); frame = 0; }
     else if (!dead && !frame) { previous = performance.now(); frame = requestAnimationFrame(tick); }
   }
-  const observer = new ResizeObserver(resize); observer.observe(stage);
-  const intersection = new IntersectionObserver(entries => { visible = entries[0]?.isIntersecting ?? false; resume(); });
-  intersection.observe(stage);
+  const observer = new ResizeObserver(resize); observer.observe(host);
+  const intersection = new IntersectionObserver(entries => { visible = entries[0]?.isIntersecting ?? false; resume(); }); intersection.observe(stage);
   document.addEventListener('visibilitychange', resume);
   const onLost = (event: Event) => { event.preventDefault(); dead = true; cancelAnimationFrame(frame); lost(); };
   renderer.domElement.addEventListener('webglcontextlost', onLost);
-  host.appendChild(renderer.domElement);
-  performance.mark('constellation-webgl-mounted');
-  resize(); resume();
+  host.appendChild(renderer.domElement); performance.mark('constellation-webgl-mounted'); resize(); resume();
   return () => {
     dead = true; cancelAnimationFrame(frame); observer.disconnect(); intersection.disconnect();
     document.removeEventListener('visibilitychange', resume);
     renderer.domElement.removeEventListener('webglcontextlost', onLost);
-    geometry.dispose(); ringGeometry.dispose(); linkGeometry.dispose(); linkMaterial.dispose(); environment.dispose();
-    starsGeometry.dispose(); starsMaterial.dispose();
-    spheres.forEach(({ material, ring }) => { material.dispose(); ring.material.dispose(); });
+    worlds.forEach(world => world.dispose());
+    skies.forEach(sky => { sky.geometry.dispose(); sky.material.dispose(); });
+    dustGeometry.dispose(); dustMaterial.dispose(); linkGeometry.dispose(); linkMaterial.dispose();
     renderer.dispose(); renderer.domElement.remove();
   };
 }

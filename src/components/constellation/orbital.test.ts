@@ -21,8 +21,12 @@ describe('owner-directed orbital home', () => {
     expect(html).not.toContain('/brand/captures/');
   });
   it('uses real spherical geometry instead of the prior tiny octahedrons', () => {
-    expect(read('./scene.ts')).toContain('SphereGeometry');
+    expect(read('./worlds.ts')).toContain('SphereGeometry');
     expect(read('./scene.ts')).not.toContain('OctahedronGeometry');
+  });
+  it('rejects the owner-superseded showroom bubble lighting', () => {
+    expect(read('./scene.ts')).not.toContain('RoomEnvironment');
+    expect(read('./scene.ts')).not.toContain('MeshPhysicalMaterial');
   });
   it('makes visual purpose the next section without duplicate product showcases', () => {
     const home = read('../../app/page.tsx');

@@ -39,7 +39,7 @@ export default function Constellation() {
 
   return (
     <section className={styles.hero} aria-labelledby="constellation-heading" data-constellation data-depth={depth}>
-      <noscript><style>{`[data-constellation] [data-stage]{height:auto!important}[data-constellation] [data-products]{display:grid!important;gap:32px}[data-constellation] [data-product]{display:block!important}[data-constellation] [data-node],[data-constellation] [data-detail]{position:static!important;transform:none!important;margin:auto;width:100%!important}[data-constellation] [data-node]{max-width:180px}[data-constellation] [data-detail][hidden]{display:block!important}[data-constellation] [data-decoration]{display:none!important}`}</style></noscript>
+      <noscript><style>{`[data-constellation] [data-stage]{height:auto!important}[data-constellation] [data-products]{display:grid!important;gap:32px}[data-constellation] [data-product]{display:block!important}[data-constellation] [data-node],[data-constellation] [data-detail]{position:static!important;transform:none!important;margin:auto;width:100%!important}[data-constellation] [data-node]{max-width:180px;height:250px!important;--world-size:180px!important}[data-constellation] [data-detail][hidden]{display:block!important}[data-constellation] [data-decoration]{display:none!important}`}</style></noscript>
       <header className={styles.heading}>
         <p className={styles.company}>{COMPANY.shortName}</p>
         <h1 id="constellation-heading">{COMPANY.motto}</h1>
@@ -74,9 +74,12 @@ export default function Constellation() {
                       if (event.pointerType === 'mouse' && !focused?.closest('[data-detail]')) select(index);
                     }}
                     onFocus={() => select(index)} onClick={() => select(index)}>
-                    <span className={styles.name}>{product.name}</span>
-                    <span className={styles.badge}>{lifecycleFor(product.key).label}</span>
-                    {product.nodeTagline && <span className={styles.nodeTagline}>{product.nodeTagline}</span>}
+                    <span className={styles.worldAnchor} data-world-anchor aria-hidden="true" />
+                    <span className={styles.worldLabel} data-world-label>
+                      <span className={styles.name}>{product.name}</span>
+                      <span className={styles.badge}>{lifecycleFor(product.key).label}</span>
+                      {product.nodeTagline && <span className={styles.nodeTagline}>{product.nodeTagline}</span>}
+                    </span>
                   </button>
                 </h2>
                 <div id={`product-detail-${product.key}`} className={styles.detail} hidden={!open} data-detail>

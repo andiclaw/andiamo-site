@@ -79,7 +79,7 @@ try {
       const detail = page.locator(`#product-detail-${key}`);
       await page.waitForTimeout(350);
       assert.equal(await node.getAttribute('aria-expanded'), 'true');
-      assert.ok(Number(await node.evaluate(el => getComputedStyle(el).scale)) > 1.1, 'selected sphere expands');
+      assert.ok(Number(await node.locator('[data-world-anchor]').evaluate(el => getComputedStyle(el).scale)) >= 1.11, 'selected world approaches');
       assert.equal(await detail.isVisible(), true);
       assert.equal(await detail.locator('figcaption').textContent(), 'Interface illustration');
       const shape = await detail.evaluate(el => {
@@ -91,6 +91,12 @@ try {
           overlap: [...document.querySelectorAll('[data-node]')].some(node => { const n = node.getBoundingClientRect(); return Math.min(n.right, rect.right) > Math.max(n.left, rect.left) + 2 && Math.min(n.bottom, rect.bottom) > Math.max(n.top, rect.top) + 2; }) };
       });
       assert.deepEqual(shape, { below: true, loaded: true, contained: true, overlap: false });
+      const typography = await page.locator('[data-world-label]').evaluateAll(labels => labels.map(label => {
+        const spans = [...label.querySelectorAll('span')];
+        return { sizes: spans.map(el => parseFloat(getComputedStyle(el).fontSize)),
+          textBottom: label.getBoundingClientRect().bottom };
+      }));
+      for (const label of typography) for (const size of label.sizes) assert.ok(size >= 12);
       const targetSamples = await page.evaluate(async () => {
         const elements = [...document.querySelectorAll('[data-node], [data-detail]:not([hidden]) a')];
         const animations = document.querySelector('[data-stage]').getAnimations({ subtree: true });
@@ -103,6 +109,18 @@ try {
         animations.forEach(a => a.play()); return samples;
       });
       for (const sample of targetSamples) assert.ok(sample.width >= 44 && sample.height >= 44, JSON.stringify(sample));
+      const collision = await page.evaluate(async () => {
+        const stage = document.querySelector('[data-stage]');
+        const animations = stage.getAnimations({ subtree: true }); animations.forEach(a => a.pause());
+        let overlap = false;
+        for (let ms = 0; ms <= 9000; ms += 500) {
+          animations.forEach(a => { a.currentTime = ms; }); await new Promise(requestAnimationFrame);
+          const boxes = [...stage.querySelectorAll('[data-node]')].map(el => el.getBoundingClientRect());
+          overlap ||= boxes.some((a, i) => boxes.slice(i + 1).some(b => Math.min(a.right, b.right) - Math.max(a.left, b.left) > 2 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 2));
+        }
+        animations.forEach(a => a.play()); return overlap;
+      });
+      assert.equal(collision, false, 'no target collision through a complete float cycle');
       samples.push({ key, targets: targetSamples });
       await page.screenshot({ path: join(output, `${key}-${viewport.width}.png`) });
       await page.keyboard.press('Tab');
