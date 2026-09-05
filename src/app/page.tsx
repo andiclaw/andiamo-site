@@ -5,31 +5,12 @@ import { SpectrumDots, SpectrumBar } from '@/components/spectrum-mark';
 import { COMPANY, PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
 import Constellation from '@/components/constellation/constellation';
-import JourneyHero from '@/components/hero/journey-hero';
-import HeroSwitcher from '@/components/hero-switcher/hero-switcher';
 
 
 export default function HomePage() {
   return (
     <div className="relative overflow-x-hidden">
-      {/* ── Top screen: the app switcher IS the hero (AND-SITE-HERO-SWITCHER-3D-001).
-          Leads with rides.andiamo.tech (item 1), sits at the very top (item 3),
-          3D floating cards that glow their own colour on hover (item 4), static
-          depth with no drifting debris (item 5), real app captures (item 6). */}
-      <HeroSwitcher />
-
-      {/* ── The mobility journey (AND-SITE-HERO-JOURNEY-BETA-001) ──────
-          One continuous trip corner to corner with the beta CTA. It moves below
-          the switcher: the switcher answers "what can I use", the journey tells
-          the Andiamo mobility story for those who want it. */}
-      <JourneyHero />
-
-      {/* The four products, each with its lifecycle badge. Retained from
-          AND-TECH-ROOT-CONSTELLATION-001: the badges and the "each at its own
-          stage" framing stay. */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-4">
-        <Constellation />
-      </section>
+      <Constellation />
 
       <div className="max-w-6xl mx-auto px-6"><SpectrumBar className="opacity-40" /></div>
 

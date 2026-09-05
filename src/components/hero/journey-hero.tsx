@@ -5,7 +5,7 @@ import { PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
 
 /**
- * The apex hero (AND-SITE-HERO-JOURNEY-BETA-001).
+ * The Rides product journey, relocated from the company home.
  *
  * The journey runs corner to corner BEHIND the message; the tagline, the primary
  * "Apply for Beta Access" button and the patent link sit centred over it.
@@ -16,24 +16,12 @@ import { PRODUCTS } from '@/lib/products';
  * no JavaScript at all, and the three.js layer only adds motion along the same
  * route and draws no text.
  *
- * The beta button wires to the beta path, `rides.andiamo.tech` (AND-REBRAND-GO-TO-RIDES-001;
- * `app.andiamo.tech` 301s there), which is
- * the closed-beta landing with the real waitlist form, its one-line privacy
- * notice and its unchecked consent box. No new collector was invented here, and
- * this site does not gather addresses of its own.
+ * The beta button retains the source-defined product URL. Host provisioning and
+ * deployment verification are separate gates; this page collects no addresses.
  */
 
-const BETA_URL = 'https://rides.andiamo.tech';
+const BETA_URL = PRODUCTS.find((p) => p.key === 'andiamo')!.url;
 
-/**
- * CONSTRAINT COLLISION, resolved deliberately and flagged rather than dropped.
- * AND-TECH-ROOT-CONSTELLATION-001 requires the Academy CTA above the fold "at
- * EQUAL weight". This card requires a single LARGE PRIMARY "Apply for Beta
- * Access" centred over the journey. Both cannot be literally true at once.
- * Academy is kept above the fold and plainly visible, but subordinate to the
- * beta primary, because this card is the later instruction and names its primary
- * explicitly. Raised for the lead rather than silently resolved.
- */
 // Sourced from the product record, not hardcoded, so it cannot drift.
 const ACADEMY_URL = PRODUCTS.find((p) => p.key === 'academy')!.url;
 
@@ -48,10 +36,12 @@ export default function JourneyHero() {
           {BRAND.eyebrow}
         </p>
 
-        <h1 className="text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
+        <h1 className="text-4xl font-black text-white sm:text-6xl">Rides</h1>
+        <p className="mt-3 mb-8 text-lg text-emerald-300">Community mobility - for anyone, anywhere.</p>
+        <h2 className="text-balance text-3xl font-black leading-[1.05] text-white sm:text-5xl">
           One trip. Every mode.{' '}
           <span className="text-emerald-300">All the way home.</span>
-        </h1>
+        </h2>
 
         <p className="mt-6 max-w-xl text-balance text-base leading-relaxed text-slate-300 sm:text-lg">
           Buses, cars, and the aircraft that are coming, chained into a single
