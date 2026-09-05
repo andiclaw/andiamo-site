@@ -5,8 +5,35 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import Constellation from './constellation';
 import { nearestNode, afterHeroPaint } from './interaction';
 import { PRODUCTS } from '../../lib/products';
+import ts from 'typescript';
+import { runInNewContext } from 'node:vm';
+import * as jsxRuntime from 'react/jsx-runtime';
 
 const source = (path: string) => readFileSync(new URL(path, import.meta.url), 'utf8');
+
+// Execute the real server components with changed canonical data. A literal-copy
+// implementation must fail even when today's production strings happen to agree.
+function ridesFixture() {
+  const product = { ...PRODUCTS.find(p => p.key === 'andiamo')!, name: 'Fixture Rides', tagline: 'Canonical fixture tagline.', url: 'https://fixture.invalid/rides' };
+  const products = PRODUCTS.map(p => p.key === 'andiamo' ? product : p);
+  const load = (path: string): Record<string, any> => {
+    const module = { exports: {} };
+    const compiled = ts.transpileModule(source(path), { compilerOptions: {
+      module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+    } }).outputText;
+    runInNewContext(compiled, { module, exports: module.exports, require: (id: string) => {
+      if (id === 'react/jsx-runtime') return jsxRuntime;
+      if (id === '@/lib/products') return { PRODUCTS: products, getProduct: (key: string) => products.find(p => p.key === key) };
+      if (id === '@/components/hero/journey-hero') return load('../hero/journey-hero.tsx');
+      if (id === '@/lib/company') return { PATENT: { number: 'Fixture patent' }, BRAND: { eyebrow: 'Fixture company' } };
+      if (id === 'next/link') return { default: 'a', __esModule: true };
+      if (id === './journey-scene' || id === './journey-depth') return { default: () => null, __esModule: true };
+      throw new Error(`Unexpected Rides dependency: ${id}`);
+    } });
+    return module.exports;
+  };
+  return { product, page: load('../../app/products/rides/page.tsx') };
+}
 
 describe('home constellation placement', () => {
   it('archives the old two home hero placements', () => {
@@ -49,7 +76,28 @@ describe('semantic and source truth', () => {
   });
   it('relocates the journey to a distinct Rides route', () => {
     expect(source('../../app/products/rides/page.tsx')).toContain('<JourneyHero');
-    expect(source('../hero/journey-hero.tsx')).toContain('Community mobility - for anyone, anywhere.');
+    expect(source('../hero/journey-hero.tsx')).toContain('One trip. Every mode.');
+  });
+  it('derives Rides metadata from changed canonical product data', () => {
+    const { product, page } = ridesFixture();
+    expect(page.metadata.description).toContain(product.tagline);
+    expect(page.metadata.title).toContain(product.name);
+    expect(page.metadata.alternates.canonical).toBe('/products/rides');
+  });
+  it('derives visible Rides identity from changed canonical product data', () => {
+    const { product, page } = ridesFixture();
+    const html = renderToStaticMarkup(createElement(page.default));
+    expect(html).toContain(product.name);
+    expect(html).toContain(product.tagline);
+    expect(html).not.toContain('Community mobility - for anyone, anywhere.');
+  });
+  it('retains canonical beta navigation and the relocated journey', () => {
+    const { product, page } = ridesFixture();
+    const html = renderToStaticMarkup(createElement(page.default));
+    expect(html).toContain(`href="${product.url}"`);
+    expect(html).toContain('One trip. Every mode.');
+    expect(html).toContain('All the way home.');
+    expect(html).toContain('Apply for Beta Access');
   });
   it('Three.js is dynamically loaded and has no provider/data loader', () => {
     expect(source('./constellation.tsx')).toContain("import('./scene')");

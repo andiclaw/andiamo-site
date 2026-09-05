@@ -20,7 +20,8 @@ import { PRODUCTS } from '@/lib/products';
  * deployment verification are separate gates; this page collects no addresses.
  */
 
-const BETA_URL = PRODUCTS.find((p) => p.key === 'andiamo')!.url;
+const RIDES = PRODUCTS.find((p) => p.key === 'andiamo')!;
+const BETA_URL = RIDES.url;
 
 // Sourced from the product record, not hardcoded, so it cannot drift.
 const ACADEMY_URL = PRODUCTS.find((p) => p.key === 'academy')!.url;
@@ -36,8 +37,8 @@ export default function JourneyHero() {
           {BRAND.eyebrow}
         </p>
 
-        <h1 className="text-4xl font-black text-white sm:text-6xl">Rides</h1>
-        <p className="mt-3 mb-8 text-lg text-emerald-300">Community mobility - for anyone, anywhere.</p>
+        <h1 className="text-4xl font-black text-white sm:text-6xl">{RIDES.name}</h1>
+        <p className="mt-3 mb-8 text-lg text-emerald-300">{RIDES.tagline}</p>
         <h2 className="text-balance text-3xl font-black leading-[1.05] text-white sm:text-5xl">
           One trip. Every mode.{' '}
           <span className="text-emerald-300">All the way home.</span>

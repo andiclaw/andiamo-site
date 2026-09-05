@@ -31,6 +31,40 @@ async function pageFor(options = {}) {
   return { page, external, errors };
 }
 try {
+  // Sample the actual projected targets throughout unfolding, not just min-height
+  // or the settled frame. Paused animation time makes the regression deterministic.
+  const targets = [];
+  for (const width of [375, 768]) {
+    const { page, external, errors } = await pageFor({ viewport: { width, height: 1024 }, hasTouch: true, reducedMotion: 'no-preference' });
+    await page.goto(origin);
+    await page.locator('[data-product="pathfinder"] [data-node]').focus();
+    for (const key of ['velocity', 'academy', 'andiamo', 'pathfinder']) {
+      await page.locator(`[data-product="${key}"] [data-node]`).focus();
+      const samples = await page.locator(`#product-detail-${key}`).evaluate(async detail => {
+        const animations = detail.getAnimations();
+        animations.forEach(animation => animation.pause());
+        const samples = [];
+        for (let ms = 0; ms <= 350; ms += 25) {
+          animations.forEach(animation => { animation.currentTime = ms; });
+          await new Promise(requestAnimationFrame);
+          for (const link of detail.querySelectorAll('a')) {
+            const rect = link.getBoundingClientRect();
+            samples.push({ ms, text: link.textContent, width: rect.width, height: rect.height });
+          }
+        }
+        animations.forEach(animation => animation.finish());
+        return samples;
+      });
+      targets.push({ width, key, samples });
+    }
+    assert.deepEqual(external, []); assert.deepEqual(errors, []);
+    await page.close();
+  }
+  writeFileSync(join(output, 'cta-targets.json'), JSON.stringify(targets, null, 2));
+  for (const target of targets) for (const sample of target.samples) {
+    assert.ok(sample.width >= 44 && sample.height >= 44,
+      `${target.width}px ${target.key} ${sample.text} at ${sample.ms}ms: ${sample.width}x${sample.height}, expected >=44px`);
+  }
   for (const viewport of [{ width: 1440, height: 1000 }, { width: 375, height: 812 }, { width: 768, height: 1024 }, { width: 1024, height: 1000 }]) {
     const { page, external, errors } = await pageFor({ viewport, hasTouch: viewport.width <= 1000 });
     await page.goto(origin);
@@ -82,6 +116,10 @@ try {
       assert.equal(geometry.pairOverlap, false, `${key} product nodes do not overlap`);
       assert.equal(geometry.contained, true, `${key} detail stays inside the hero stage`);
       const bounds = await node.boundingBox(); assert.ok(bounds.height >= 44 && bounds.width >= 44);
+      for (const link of await page.locator(`#product-detail-${key} a`).all()) {
+        const target = await link.boundingBox();
+        assert.ok(target.height >= 44 && target.width >= 44, `${key} rendered action target >=44px`);
+      }
       await page.screenshot({ path: join(output, `${key}-${viewport.width}.png`) });
       await page.keyboard.press('Tab');
       assert.equal(await page.locator(`#product-detail-${key} a`).first().evaluate(el => el === document.activeElement), true);

@@ -63,6 +63,8 @@
   .tagline { font-size: 15px; margin-bottom: 10px; }
   .description { font-size: 12px; line-height: 1.55; }
   .audience { font-size: 10px; margin: 8px 0; }
+  /* The unfolding perspective projects 44px to about 40px. Keep every frame touch-sized. */
+  .cta, .story { min-height: 50px; }
   .signature { display: none; }
   .axis { top: 20px; height: 250px; width: 78%; left: 11%; }
 }
