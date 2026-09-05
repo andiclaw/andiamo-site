@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import Constellation from './constellation';
 import { nearestNode, afterHeroPaint } from './interaction';
 import { PRODUCTS } from '../../lib/products';
+import { HOME_PRODUCTS } from './home-products';
 import ts from 'typescript';
 import { runInNewContext } from 'node:vm';
 import * as jsxRuntime from 'react/jsx-runtime';
@@ -40,14 +41,14 @@ describe('home constellation placement', () => {
     const home = source('../../app/page.tsx');
     expect(home).not.toContain('<HeroSwitcher');
     expect(home).not.toContain('<JourneyHero');
-    expect(home.indexOf('<Constellation')).toBeLessThan(home.indexOf('<SpectrumBar'));
+    expect(home.indexOf('<Constellation')).toBeLessThan(home.indexOf('<section'));
   });
   it('renders an immediate semantic hero and product details', () => {
     const hero = source('./constellation.tsx');
     expect(hero).toContain('<h1');
-    expect(hero).toContain('Andiamo Tech');
-    expect(hero).toContain('product.valueProp');
-    expect(hero).toContain('product.audience');
+    expect(hero).toContain('COMPANY.shortName');
+    expect(hero).toContain('product.line');
+    expect(hero).toContain('product.previewAlt');
     expect(hero).toContain('aria-expanded');
   });
   it('keeps the required Rides tagline in canonical data', () => {
@@ -57,12 +58,12 @@ describe('home constellation placement', () => {
 
 describe('semantic and source truth', () => {
   const markup = renderToStaticMarkup(createElement(Constellation));
-  it('server renders each product, lifecycle, description, audience and canonical URL without WebGL', () => {
-    for (const p of PRODUCTS) {
+  it('server renders each product, lifecycle, concise line, preview and canonical URL without WebGL', () => {
+    for (const p of HOME_PRODUCTS) {
       expect(markup).toContain(`data-product="${p.key}"`);
       expect(markup).toContain(p.url);
-      expect(markup).toContain(p.valueProp);
-      expect(markup).toContain(p.audience);
+      expect(markup).toContain(p.line.replaceAll("'", '&#x27;'));
+      expect(markup).toContain(p.preview.asset);
     }
     expect(markup).toContain('<noscript>');
     expect(markup).not.toContain('<canvas');

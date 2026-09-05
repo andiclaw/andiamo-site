@@ -1,75 +1,64 @@
-.hero { position: relative; overflow: hidden; background: #060b09; color: #f3f7f5; letter-spacing: 0; padding: 36px 24px 16px; }
-.heading { max-width: 1200px; margin: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
-.heading h1 { font-size: 64px; font-weight: 650; line-height: 1.08; letter-spacing: 0; }
-.eyebrow { color: #74e8ad; font-size: 12px; margin-bottom: 12px; }
-.intro { color: #b9c9c0; font-size: 15px; line-height: 1.7; padding-bottom: 4px; }
-.stage { position: relative; max-width: 1320px; height: 660px; margin: 20px auto 0; perspective: 1100px; }
-.canvas { position: absolute; inset: 0; pointer-events: none; }
+.hero { position: relative; background: #060b09; color: #f3faf6; padding: 24px 24px 0; }
+.heading { text-align: center; margin: 0 auto; max-width: 900px; }
+.company { font-size: 22px; font-weight: 600; color: #b8cfc4; margin-bottom: 10px; }
+.heading h1 { font-size: 48px; line-height: 1.12; font-weight: 600; margin: 0 auto; max-width: 800px; letter-spacing: 0; }
+.stage { position: relative; max-width: 1240px; margin: 0 auto; height: 600px; isolation: isolate; }
+.canvas { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
 .canvas canvas { width: 100%; height: 100%; display: block; }
-.products { list-style: none; margin: 0; padding: 0; position: relative; height: 100%; transform-style: preserve-3d; transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: transform .3s ease-out; }
-.product { position: absolute; min-width: 0; width: 292px; left: 50%; top: 10px; border: 1px solid #30473c; background: #0b1511f5; border-radius: 8px; transform: translateX(-50%) rotateX(7deg); transition: transform .45s, border-color .45s, box-shadow .45s; box-shadow: 0 20px 28px #0006; }
-.product[data-product='academy'] { left: 16%; top: 190px; }
-.product[data-product='andiamo'] { left: 84%; top: 190px; }
-.product[data-product='pathfinder'] { top: 490px; }
-.product[data-open='true'] { z-index: 2; transform: translateX(-50%) rotateX(0deg) translateZ(32px); border-color: var(--accent); box-shadow: 0 30px 60px #000a; }
-.product[data-product='pathfinder'][data-open='true'] { top: 180px; }
-.product[data-product='academy'][data-open='true'], .product[data-product='andiamo'][data-open='true'] { top: 165px; }
-.node { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 18px 20px; color: #f6faf8; text-decoration: none; min-height: 110px; }
-.number { color: var(--accent); font: 11px monospace; grid-column: 1/-1; margin-bottom: 10px; }
-.node h2 { font-size: 26px; line-height: 1.2; font-weight: 600; }
-.badge { font-size: 11px; color: #c3d3ca; grid-column: 1; margin-top: 6px; }
-.nodeArrow { grid-column: 2; grid-row: 2; color: var(--accent); font-size: 23px; }
-.nodeTagline { font-size: 11px; color: #99ddba; margin-top: 6px; grid-column: 1/-1; }
-.detail { padding: 0 20px 18px; }
-.tagline { font-size: 17px; line-height: 1.4; color: #f4f7f5; margin-bottom: 12px; }
-.description { color: #c4d1ca; font-size: 13px; line-height: 1.6; }
-.audience { color: #9eafa5; font-size: 11px; line-height: 1.6; margin: 12px 0; }
-.actions { display: flex; align-items: center; gap: 16px; border-top: 1px solid #354c40; }
-.cta { flex: 1; display: flex; justify-content: space-between; gap: 8px; align-items: center; min-height: 44px; color: #aff6d0; font-size: 14px; font-weight: 600; }
-.story { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; text-decoration: underline; color: #bdcec3; }
-.hero a:focus-visible { outline: 2px solid #dcffae; outline-offset: 4px; border-radius: 4px; }
-.signature { position: absolute; bottom: 20px; left: 0; color: #84998d; font: 10px monospace; }
-.next { display: flex; gap: 24px; align-items: center; justify-content: center; min-height: 44px; font-size: 12px; color: #bccec2; width: fit-content; margin: auto; }
-.axis { position: absolute; width: 58%; height: 390px; left: 21%; top: 70px; border: 1px solid #42655255; border-radius: 50%; transform: rotateX(50deg) rotateZ(-16deg); pointer-events: none; }
-.axis span { position: absolute; inset: 35px -65px; border: 1px solid #42655233; border-radius: 50%; transform: rotateZ(45deg); }
-.hero[data-depth='true'] .axis { opacity: 0; }
-@media (max-width: 1050px) {
-  .heading h1 { font-size: 48px; }
-  .product { width: 250px; }
-  .product[data-product='academy'] { left: 17%; }
-  .product[data-product='andiamo'] { left: 83%; }
-  .node h2 { font-size: 23px; }
-}
+.stage[data-paused="true"] .node { animation-play-state: paused; }
+.products { list-style: none; margin: 0; padding: 0; }
+.product, .productHeading { display: contents; }
+.node { position: absolute; top: 24px; left: calc(14% + var(--index) * 24%); transform: translateX(-50%); width: 174px; height: 174px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 9px; padding: 15px; color: #fff; border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); background: radial-gradient(circle at 32% 20%, #ffffff38, #ffffff04 28%, #0008 75%), color-mix(in srgb, var(--accent) 22%, #07100d); box-shadow: inset -14px -18px 24px #0008, inset 4px 6px 15px #ffffff24, 0 15px 38px #0009; cursor: pointer; text-shadow: 0 2px 6px #000; animation: drift 7s ease-in-out infinite; animation-delay: calc(var(--index) * -1.6s); }
+.product:nth-child(1) .node, .product:nth-child(4) .node { top: 62px; }
+.hero[data-depth="true"] .node { background: transparent; box-shadow: none; border-color: transparent; }
+.hero[data-depth="true"] .node { color: #061b14; text-shadow: 0 1px 5px #ffffff80; }
+.hero[data-depth="true"] .badge, .hero[data-depth="true"] .nodeTagline { color: #112d22; }
+.name { font-size: 23px; line-height: 1.1; font-weight: 650; }
+.badge { color: #e0ece5; font-size: 11px; line-height: 1.2; font-weight: 500; }
+.nodeTagline { font-size: 11px; line-height: 1.3; max-width: 140px; font-weight: 400; }
+.product[data-open="true"] .node { --grow: 1.12; }
+.node { --grow: 1; scale: var(--grow); transition: scale 300ms ease; }
+.node:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+.node:hover, .node:focus { animation-play-state: paused; }
+.product[data-open="true"] .node .name { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 8px; }
+.detail { position: absolute; top: 258px; left: 50%; transform: translateX(-50%); width: min(580px, 100%); text-align: center; animation: arrive 220ms ease-out; }
+.detail[hidden] { display: none; }
+.line { margin: 0 0 14px; font-size: 20px; line-height: 1.35; color: #eff9f3; }
+.preview { position: relative; margin: 0; border: 1px solid #667e7166; border-radius: 8px; overflow: hidden; background: #0f1719; box-shadow: 0 12px 55px #0008; }
+.preview img { display: block; width: 100%; height: auto; aspect-ratio: 5/2; }
+.preview figcaption { position: absolute; right: 8px; bottom: 6px; font-size: 10px; line-height: 1.4; color: #d1dad5; background: #0b1213; padding: 2px 5px; border-radius: 2px; }
+.actions { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
+.cta, .story { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 50px; padding: 0 12px; font-size: 14px; color: #eff9f3; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
+.cta:focus-visible, .story:focus-visible, .next:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.next { display: flex; min-height: 48px; align-items: center; justify-content: center; gap: 16px; width: fit-content; margin: 0 auto; font-size: 12px; color: #c2d6ca; }
+@keyframes drift { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -9px); } }
+@keyframes arrive { from { opacity: .25; } to { opacity: 1; } }
 @media (max-width: 1000px) {
-  .hero { padding: 16px 16px 12px; }
-  .heading { display: block; }
-  .heading h1 { font-size: 38px; }
-  .eyebrow { margin-bottom: 8px; font-size: 11px; }
-  .intro { font-size: 12px; margin-top: 10px; }
-  .stage { height: 520px; margin-top: 12px; }
-  .products { transform: none; }
-  .product { display: contents; }
-  .node { position: absolute; top: 0; left: 50%; width: 150px; min-height: 86px; padding: 10px 12px; transform: translateX(-50%); border: 1px solid #365344; background: #0b1511ed; border-radius: 6px; }
-  .node h2 { font-size: 19px; }
-  .nodeArrow { font-size: 20px; line-height: 1; }
-  .number { margin-bottom: 4px; font-size: 9px; }
-  .badge { font-size: 10px; margin-top: 3px; }
-  .nodeTagline { font-size: 10px; }
-  [data-product='academy'] .node { left: 24%; top: 94px; }
-  [data-product='andiamo'] .node { left: 76%; top: 94px; }
-  [data-product='pathfinder'] .node { top: 199px; }
-  [data-open='true'] .node { border-color: var(--accent); box-shadow: 0 8px 28px #0009; }
-  .detail { position: absolute; top: 295px; left: 0; right: 0; padding: 12px 0 0; border-top: 1px solid var(--accent); animation: unfold .35s ease-out; transform-origin: center top; }
-  .tagline { font-size: 15px; margin-bottom: 10px; }
-  .description { font-size: 12px; line-height: 1.55; }
-  .audience { font-size: 10px; margin: 8px 0; }
-  /* The unfolding perspective projects 44px to about 40px. Keep every frame touch-sized. */
-  .cta, .story { min-height: 50px; }
-  .signature { display: none; }
-  .axis { top: 20px; height: 250px; width: 78%; left: 11%; }
+  .heading h1 { font-size: 40px; max-width: 670px; }
+  .stage { height: 550px; }
+  .node { width: 140px; height: 140px; }
+  .name { font-size: 20px; }
+  .detail { top: 220px; width: min(560px, 100%); }
 }
-@keyframes unfold { from { opacity: 0; transform: rotateX(-12deg); } to { opacity: 1; transform: rotateX(0deg); } }
+@media (max-width: 600px) {
+  .hero { padding: 18px 18px 0; }
+  .company { font-size: 18px; margin-bottom: 8px; }
+  .heading h1 { font-size: 30px; max-width: 360px; }
+  .stage { height: 515px; }
+  .node { width: 110px; height: 110px; left: 29%; top: 20px; gap: 6px; }
+  .product:nth-child(1) .node { top: 20px; }
+  .product:nth-child(2) .node { left: 71%; top: 20px; }
+  .product:nth-child(3) .node { left: 29%; top: 142px; }
+  .product:nth-child(4) .node { left: 71%; top: 142px; }
+  .name { font-size: 17px; }
+  .badge { font-size: 10px; }
+  .nodeTagline { font-size: 10px; max-width: 102px; }
+  .product[data-product="andiamo"] .node { padding: 8px; gap: 4px; }
+  .detail { top: 273px; }
+  .line { font-size: 15px; min-height: 41px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .actions { gap: 4px; margin-top: 3px; }
+  .cta, .story { font-size: 12px; padding: 0 7px; gap: 7px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero *, .hero *::before, .hero *::after { animation: none !important; transition: none !important; }
-  .products { transform: none; }
+  .node, .detail { animation: none; transition: none; }
 }
