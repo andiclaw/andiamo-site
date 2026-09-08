@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "task": "SITE-HERO-3D-SWITCHER-001",
+  "recordedDate": "2026-09-07",
+  "status": "NEEDS_EVIDENCE",
+  "scope": "Home interface previews only; not a production screenshot or runtime clearance. No approved local demo capture packet was supplied for this slice. Existing illustration source references are historical, not current product parity proof.",
+  "siteBaseline": {
+    "commit": "a546775cf93bef48287fd023c1e5aee960cd47df",
+    "tree": "efdc6d7a6e757ff06dab0d54308d6a7c3cdc237f"
+  },
+  "census": {
+    "path": "/Users/andiclaw/.codex/visualizations/2026/08/14/01a000fc-541f-7c11-959f-5ee072a82fd6/pf-site-owner-census-2026-09-07.md",
+    "sha256": "5eed2410e7a4aa6878c0a5af435a142b63a52c0087a8e0704a52350e00b2b294"
+  },
+  "requiredCapturePacket": [
+    "approved local-only demo route/window and exact source commit/tree",
+    "sealed build identity and synthetic fixture identity/hash",
+    "route and UI state, viewport dimensions, device scale, capture timestamp and command",
+    "network-denial and no authentication/session/customer access evidence",
+    "redaction/privacy review and screenshot file SHA-256",
+    "honest local synthetic/demo caption; independent review and exact-tip owner approval"
+  ],
+  "brandAssets": {
+    "status": "NEEDS_EVIDENCE",
+    "expectedDirectory": "/Users/andiclaw/Documents/shared/andiamo-agent-active-context/assets/2026-09-06-brand",
+    "observation": "Directory absent at preflight; car original not received in owner receipt. No existing image or mark replaced.",
+    "held": ["Rides softer-glow wordmark", "Tech wordmark", "original attached symbols", "car original"],
+    "ownerCard": "AND-RIDES-BRAND-LANDING-DIRECTIVE-001"
+  },
+  "products": [
+    {
+      "key": "velocity",
+      "captureStatus": "NEEDS_EVIDENCE",
+      "reason": "NO_APPROVED_LOCAL_DEMO_CAPTURE_PACKET",
+      "capture": null,
+      "illustration": {
+        "kind": "authored-illustration", "label": "Interface illustration",
+        "asset": "/home-orbital/velocity-interface.svg",
+        "sha256": "a07850487cf1b56450a4d7552284d1fda1540e864dca7c09d5948ec0cfbe1af5",
+        "sourceRepo": "Velocity",
+        "sourceCommit": "d009756a7d37ec2bbe6302278d4a200e07291e53",
+        "sourcePaths": ["src/app/about/page.tsx", "src/components/trend-card.tsx", "src/components/security/stack-watch-list.tsx", "src/components/local-intel-pulse.tsx"]
+      }
+    },
+    {
+      "key": "academy",
+      "captureStatus": "NEEDS_EVIDENCE",
+      "reason": "NO_APPROVED_LOCAL_DEMO_CAPTURE_PACKET",
+      "capture": null,
+      "illustration": {
+        "kind": "authored-illustration", "label": "Interface illustration",
+        "asset": "/home-orbital/academy-interface.svg",
+        "sha256": "dfd32e9d01c3bc5c126d6a710071018ba94317963dfea20fd1394654c31befe9",
+        "sourceRepo": "academy",
+        "sourceCommit": "c817d656b3ea30e2dcbff3df3ffeaf05a42a032c",
+        "sourcePaths": ["src/components/landing/LandingV3.tsx", "src/app/api/parent/family-planner/draw/route.ts", "src/app/api/parent/record-export/route.ts"]
+      }
+    },
+    {
+      "key": "andiamo",
+      "captureStatus": "NEEDS_EVIDENCE",
+      "reason": "NO_APPROVED_LOCAL_DEMO_CAPTURE_PACKET",
+      "capture": null,
+      "illustration": {
+        "kind": "authored-illustration", "label": "Interface illustration",
+        "asset": "/home-orbital/andiamo-interface.svg",
+        "sha256": "4a98034a357112aa8493dd61d9e918842a7095a2d02e9c02bd0809ff4f476e02",
+        "sourceRepo": "Andiamo",
+        "sourceCommit": "6cdced61b6aca51cdcc2ab0bcbef6972ea3b7b8a",
+        "sourcePaths": ["src/lib/brand.ts"]
+      }
+    },
+    {
+      "key": "pathfinder",
+      "captureStatus": "NEEDS_EVIDENCE",
+      "reason": "NO_APPROVED_LOCAL_DEMO_CAPTURE_PACKET",
+      "capture": null,
+      "illustration": {
+        "kind": "authored-illustration", "label": "Interface illustration",
+        "asset": "/home-orbital/pathfinder-interface.svg",
+        "sha256": "9fa55617ca77630b051584c8010aebc203462e985a55105f8f4d287246000a2f",
+        "sourceRepo": "Explorer",
+        "sourceCommit": "d7c7c87110f74463f6c0ade34a5a367d281b644b",
+        "sourcePaths": ["README.md", "src/components/WatcherView.tsx", "src/components/EditorPanel.tsx"]
+      }
+    }
+  ]
+}

@@ -52,7 +52,7 @@ describe('home constellation placement', () => {
     expect(hero).toContain('aria-expanded');
   });
   it('keeps the required Rides tagline in canonical data', () => {
-    expect(source('../../lib/products.ts')).toContain("tagline: 'Community mobility - for anyone, anywhere.'");
+    expect(source('../../lib/products.ts')).toContain("tagline: 'Mobility with Meaning.'");
   });
 });
 
@@ -83,6 +83,7 @@ describe('semantic and source truth', () => {
     const { product, page } = ridesFixture();
     expect(page.metadata.description).toContain(product.tagline);
     expect(page.metadata.title).toContain(product.name);
+    expect(page.metadata.title).toContain(product.tagline);
     expect(page.metadata.alternates.canonical).toBe('/products/rides');
   });
   it('derives visible Rides identity from changed canonical product data', () => {

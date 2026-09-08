@@ -57,8 +57,8 @@ describe('owner-directed orbital home', () => {
   it('keeps Rides canonical identity visible even when another disclosure is selected', () => {
     const html = renderToStaticMarkup(createElement(Constellation));
     const rides = html.slice(html.indexOf('data-product="andiamo"'), html.indexOf('data-product="pathfinder"'));
-    expect(rides.slice(0, rides.indexOf('</button>'))).toContain('Community mobility');
-    expect(rides).toContain('Community mobility - for anyone, anywhere.');
+    expect(rides.slice(0, rides.indexOf('</button>'))).toContain('Mobility with Meaning.');
+    expect(rides).toContain('Mobility with Meaning.');
     expect(rides).toContain('Closed beta');
   });
   it('gives each product a distinct purpose and a distinct authored visual', () => {

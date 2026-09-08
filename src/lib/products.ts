@@ -91,7 +91,7 @@ export const PRODUCTS: Product[] = [
     key: 'andiamo',
     // AND-REBRAND-GO-TO-RIDES-001: the PRODUCT is Rides; Andiamo is the company.
     name: 'Rides',
-    tagline: 'Community mobility - for anyone, anywhere.',
+    tagline: 'Mobility with Meaning.',
     valueProp:
       'A zone-mobility platform where riders post trips, operators bid, and a smart contract splits each fare across the operator, the city, a helper fund for subsidized rides, and platform maintenance.',
     bullets: [
