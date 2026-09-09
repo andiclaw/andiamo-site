@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { PRODUCTS, STATUS_LABEL, type Product } from '@/lib/products';
 import { ProductCapture } from './product-capture';

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ProductShowcase } from '@/components/product-showcase';
 import { Reveal } from '@/components/reveal';
 import { SpectrumDots, SpectrumBar } from '@/components/spectrum-mark';
-import { COMPANY, PATENT, BRAND } from '@/lib/company';
+import { PATENT, BRAND } from '@/lib/company';
 import { PRODUCTS } from '@/lib/products';
 import Constellation from '@/components/constellation/constellation';
 import JourneyHero from '@/components/hero/journey-hero';

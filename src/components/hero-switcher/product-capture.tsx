@@ -21,7 +21,6 @@ export function ProductCapture({ product }: { product: Product }) {
       <picture>
         <source srcSet={`${base}.avif`} type="image/avif" />
         <source srcSet={`${base}.webp`} type="image/webp" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${base}.jpg`}
           alt={product.captureCaption ?? `${product.name}, live`}
