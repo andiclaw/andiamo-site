@@ -64,7 +64,7 @@ export const ecosystemApps: EcosystemApp[] = [
     // company / ecosystem stays Andiamo (this apex site).
     key: 'andiamo',
     title: 'Rides',
-    tagline: 'Community mobility',
+    tagline: 'Mobility with Meaning.',
     href: resolveHref('ANDIAMO', 'https://rides.andiamo.tech', 3007),
     port: 3007,
     icon: 'R',
