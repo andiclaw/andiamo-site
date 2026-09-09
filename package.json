@@ -1,6 +1,6 @@
 {
   "name": "andiamo-site",
-  "version": "0.1.0",
+  "version": "0.8.3",
   "private": true,
   "description": "andiamo.tech apex \u2014 corporate site for Andiamo Tech, Inc. (PBC). Umbrella landing for Academy, Andiamo, Velocity, and Pathfinder.",
   "scripts": {
