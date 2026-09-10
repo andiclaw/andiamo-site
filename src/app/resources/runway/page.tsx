@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * SITE-RUNWAY-CALCULATOR-STARTUP-RESOURCE-001 — Brendan #163, verbatim: "yes move
+ * SITE-RUNWAY-CALCULATOR-STARTUP-RESOURCE-001, Brendan #163, verbatim: "yes move
  * that to the andiamo.tech site as a startup resource".
  *
  * It lived behind the Rides sign-in, where the people it is useful to could not

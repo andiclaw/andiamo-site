@@ -1,4 +1,4 @@
-// RunwayToFlight v3.6 — TypeScript port of the Python compute engine.
+// RunwayToFlight v3.6, a TypeScript port of the Python compute engine.
 //
 // PORTED VERBATIM from the Andiamo Rides repo (src/lib/runway.ts) for
 // SITE-RUNWAY-CALCULATOR-STARTUP-RESOURCE-001, Brendan #163: "yes move that to
@@ -444,7 +444,7 @@ export function buildPrompt(inp: RunwayInput, c: RunwayCalc, currencySymbol = '$
   }
 
   const formation = inp.formation_date || '';
-  return `COPY/PASTE INTO YOUR IMAGE GENERATOR — BEGIN
+  return `COPY/PASTE INTO YOUR IMAGE GENERATOR: BEGIN
 STYLE
 Minimal, top-down vector infographic on a subtle blueprint grid.
 Clean modern sans-serif font, blueprint blue background, white lines,
@@ -463,7 +463,7 @@ SCENE COMPOSITION
 
 MIDLINE TEXT
 "${midText}"
-COPY/PASTE INTO YOUR IMAGE GENERATOR — END`;
+COPY/PASTE INTO YOUR IMAGE GENERATOR: END`;
 }
 
 export function buildSummary(c: RunwayCalc, currencySymbol = '$'): string {
@@ -502,7 +502,7 @@ export function buildSummary(c: RunwayCalc, currencySymbol = '$'): string {
     bottom = `⚠️ Requires ${currencySymbol}${money(c.fundingGap)} to reach operational liftoff. Recommended raise (+${DEFAULT_RAISE_BUFFER_PCT.toFixed(0)}% buffer): ${currencySymbol}${money(c.recommendedRaise)}. Alternatives → growth ≥ ${gOpt}/mo or cost cut ≥ ${cOpt}.`;
   }
 
-  return `🚀 RUN SUMMARY — ${c.companyName}
+  return `🚀 RUN SUMMARY: ${c.companyName}
 ────────────────────────────────────────────
 💰 CASH
 • Available: ${currencySymbol}${money(c.totalCash)}

@@ -1,6 +1,12 @@
 'use client';
 
 import type { RunwayCalc } from '@/lib/runway';
+// One month is not "1 months". R2 caught it rendered on the production build
+// (#2074); it came across from Rides with the rest of the file.
+function monthLabel(n: number | null | undefined): string {
+  if (n === null || n === undefined) return 'an unknown number of months';
+  return n === 1 ? '1 month' : `${n} months`;
+}
 // Ported from the Rides repo alongside src/lib/runway.ts (#163). Type-only import,
 // so it carries no app dependency with it.
 
@@ -350,9 +356,9 @@ export default function RunwayIllustration({ calc }: Props) {
             fillOpacity="0.9"
           />
           <text x="380" y="300" textAnchor="middle" fontSize="11" fill="white" fontWeight="bold" fontFamily="system-ui">
-            {scenario === 'liftoff' && `✅ Liftoff in ${calc.opMonth} months — no funding needed`}
-            {scenario === 'funding' && `⚠️ Needs ${fmt(calc.fundingGap)} to reach liftoff in ${calc.opMonth} months`}
-            {scenario === 'unreachable' && `❌ Cannot reach liftoff — pivot strategy required`}
+            {scenario === 'liftoff' && `✅ Liftoff in ${monthLabel(calc.opMonth)}, no funding needed`}
+            {scenario === 'funding' && `⚠️ Needs ${fmt(calc.fundingGap)} to reach liftoff in ${monthLabel(calc.opMonth)}`}
+            {scenario === 'unreachable' && `❌ Cannot reach liftoff: pivot strategy required`}
           </text>
         </g>
 
