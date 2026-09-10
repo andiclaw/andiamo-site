@@ -6,6 +6,9 @@ const NAV = [
   { href: '/about', label: 'About' },
   { href: '/patent', label: 'Patent' },
   { href: '/press', label: 'Press' },
+  // #163: the runway calculator is a free public resource, so it needs a way in
+  // from the top of the site - it was invisible behind the Rides sign-in before.
+  { href: '/resources/runway', label: 'Resources' },
   { href: '/report', label: 'Report an issue' },
 ];
 
