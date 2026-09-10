@@ -27,6 +27,18 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3019
 ENV HOSTNAME=0.0.0.0
 
+# Drop the package manager from the RUNTIME image. Nothing here uses it: the
+# entrypoint is `node server.js`, the healthcheck is wget, and the standalone
+# server never shells out to npm (verified 2026-09-10 by serving every route of
+# this build with npm absent from PATH - / /about /privacy /terms all 200).
+# Defender flags 11 npm-CLI internals on the live andiamo-site image
+# (tar, glob, minimatch, pacote, sigstore, @sigstore/core, cross-spawn,
+# brace-expansion, ip-address, diff, postcss-selector-parser). None of them are
+# in this app's production dependency closure - they ship inside the base
+# image's bundled npm. Removing software beats upgrading software we do not run.
+RUN rm -rf /usr/local/lib/node_modules/npm \
+           /usr/local/bin/npm /usr/local/bin/npx
+
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
