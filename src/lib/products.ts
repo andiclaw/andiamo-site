@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     ],
     url: 'https://velocity.andiamo.tech',
     status: 'live',
-    accent: '#22D3EE',
+    accent: '#00D4FF', // Velocity src/app/globals.css --vel-accent-500
     licenseLine: 'Closed source · subscription tiers from $0/mo',
     audience: 'Traders, security teams, founders, journalists, and AI agents.',
     capture: 'velocity',
@@ -74,10 +74,10 @@ export const PRODUCTS: Product[] = [
     ],
     url: 'https://academy.andiamo.tech',
     status: 'live',
-    accent: '#6330FF',
+    accent: '#3B82D6', // Academy src/app/globals.css --aca-primary-light (Schoolhouse Blue; DECISIONS 2026-07-01)
     licenseLine: 'Closed source · per-family subscription',
     audience: 'Homeschool parents, microschools, and tutoring co-ops.',
-    brandMark: '/brand/andaro/concepts/sleek-purple-no-eyes-bare.svg',
+    brandMark: '/brand/andaro/concepts/sleek-blue-no-eyes.svg',
     brandTease: 'Andaro: From Sparks to Stars, an Academy Story by Andiamo.',
     capture: 'academy',
     captureCaption: 'The live Academy home at academy.andiamo.tech.',
@@ -104,7 +104,7 @@ export const PRODUCTS: Product[] = [
     ],
     url: 'https://rides.andiamo.tech',
     status: 'building',
-    accent: '#22C55E',
+    accent: '#12C04C', // Andiamo (Rides) src/app/globals.css --primary
     licenseLine: 'Closed source · open API once GA',
     audience: 'Riders, fleet operators, transit authorities, and cities.',
     capture: 'andiamo',
@@ -131,7 +131,7 @@ export const PRODUCTS: Product[] = [
     // download page yet, so the link goes to Pathfinder's section on this site.
     url: '/products#pathfinder',
     status: 'beta',
-    accent: '#F59E0B',
+    accent: '#0EA5E9', // Explorer (Pathfinder) src/index.css --pf-accent-500
     licenseLine: 'Open source · MIT',
     audience: 'Developers, power users, and anyone who Finder has let down.',
     impact: {

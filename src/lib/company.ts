@@ -23,9 +23,9 @@ export const PATENT = {
 
 /**
  * The four-product spectrum. Each product owns a color; the umbrella brand
- * is the set of all four. Order reads cyan, violet, green, amber.
+ * is the set of all four. Order: Velocity, Academy, Rides, Pathfinder, each its own app theme token.
  */
-export const SPECTRUM = ['#22D3EE', '#8B5CF6', '#22C55E', '#F59E0B'] as const;
+export const SPECTRUM = ['#00D4FF', '#3B82D6', '#12C04C', '#0EA5E9'] as const;
 export const SPECTRUM_GRADIENT =
   'linear-gradient(90deg, #22D3EE 0%, #6366F1 34%, #22C55E 67%, #F59E0B 100%)';
 

@@ -16,7 +16,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ecosystemApps } from './ecosystem-apps';
 
-const ACADEMY_MARK_SRC = '/brand/andaro/concepts/sleek-purple-no-eyes-tile.svg';
+const ACADEMY_MARK_SRC = '/brand/andaro/concepts/sleek-blue-no-eyes-tile.svg';
 const VELOCITY_MARK_SRC = '/brand/ecosystem/velocity-mark.png';
 const ANDIAMO_MARK_SRC = '/brand/ecosystem/andiamo-mark.svg';
 

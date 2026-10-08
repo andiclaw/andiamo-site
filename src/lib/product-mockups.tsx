@@ -37,7 +37,7 @@ export const PRODUCT_MOCKUP: Record<Product['key'], () => ReactNode> = {
   academy: () => (
     <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Academy lesson tracker mockup">
       <rect width="360" height="200" rx="12" fill="#1a1f3a" />
-      <text x="16" y="22" fontFamily="ui-sans-serif, system-ui" fontSize="10" fill="#a78bfa" letterSpacing="2">MARIA · GRADE 2 · WEEK 18</text>
+      <text x="16" y="22" fontFamily="ui-sans-serif, system-ui" fontSize="10" fill="#3b82d6" letterSpacing="2">MARIA · GRADE 2 · WEEK 18</text>
       <text x="344" y="22" fontFamily="ui-sans-serif, system-ui" fontSize="9" fill="#64748b" textAnchor="end">WA · compliant</text>
       {[
         { day: 'Mon', subj: 'Reading · The Lighthouse', done: true },
@@ -48,14 +48,14 @@ export const PRODUCT_MOCKUP: Record<Product['key'], () => ReactNode> = {
       ].map((row, i) => (
         <g key={row.day} transform={`translate(0, ${42 + i * 26})`}>
           <rect x="16" y="0" width="328" height="20" rx="6" fill="#0f172a" opacity="0.5" />
-          <circle cx="28" cy="10" r="5" fill={row.done ? '#a78bfa' : 'transparent'} stroke="#a78bfa" strokeWidth="1.2" />
+          <circle cx="28" cy="10" r="5" fill={row.done ? '#3b82d6' : 'transparent'} stroke="#3b82d6" strokeWidth="1.2" />
           {row.done && <path d="M25 10 L27 12 L31 8" stroke="#0f172a" strokeWidth="1.5" fill="none" />}
           <text x="42" y="13" fontFamily="ui-sans-serif, system-ui" fontSize="9" fill="#94a3b8">{row.day}</text>
           <text x="78" y="13" fontFamily="ui-sans-serif, system-ui" fontSize="10" fill={row.done ? '#cbd5e1' : '#94a3b8'}>{row.subj}</text>
         </g>
       ))}
       <rect x="16" y="180" width="328" height="6" rx="3" fill="#0f172a" />
-      <rect x="16" y="180" width="197" height="6" rx="3" fill="#8b5cf6" />
+      <rect x="16" y="180" width="197" height="6" rx="3" fill="#3b82d6" />
     </svg>
   ),
 

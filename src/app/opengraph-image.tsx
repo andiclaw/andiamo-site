@@ -4,7 +4,7 @@ export const alt = 'Andiamo Tech, Inc. Building software to better the world.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const SPECTRUM = ['#22D3EE', '#8B5CF6', '#22C55E', '#F59E0B'];
+const SPECTRUM = ['#00D4FF', '#3B82D6', '#12C04C', '#0EA5E9'];
 
 export default async function OpengraphImage() {
   return new ImageResponse(
@@ -68,7 +68,7 @@ export default async function OpengraphImage() {
             Software that solves{' '}
             <span
               style={{
-                backgroundImage: 'linear-gradient(90deg, #67e8f9, #a78bfa 45%, #4ade80 75%, #fbbf24)',
+                backgroundImage: 'linear-gradient(90deg, #00d4ff, #3b82d6 45%, #12c04c 75%, #0ea5e9)',
                 backgroundClip: 'text',
                 color: 'transparent',
               }}

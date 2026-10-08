@@ -21,14 +21,14 @@
 .tilePanel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .32s ease, visibility 0s linear .32s; }
 .tilePanelInner { min-height: 0; overflow: hidden; padding: 0 1rem; text-align: left; }
 .tilePanelInner p { margin: 0 0 .35rem; color: #d5e2e6; font-size: .86rem; line-height: 1.45; }
-.tilePanelInner a { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: .55rem; color: #bdf5e4; font-size: .9rem; font-weight: 650; text-decoration: underline; text-underline-offset: .25em; }
+.tilePanelInner a { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: .55rem; color: var(--c-site); font-size: .9rem; font-weight: 650; text-decoration: underline; text-underline-offset: .25em; }
 .nodeWrap[data-open="true"] .tilePanel { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .32s ease, visibility 0s; }
 @media (hover: hover) {
   .nodeWrap:hover, .nodeWrap:focus-within { z-index: 5; }
   .nodeWrap:hover .tilePanel, .nodeWrap:focus-within .tilePanel { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .32s ease, visibility 0s; }
   .nodeWrap:hover .tile { border-color: var(--accent); }
 }
-.pathfinder { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .55rem; min-height: 48px; margin-top: 2rem; padding: .6rem 1rem; border: 1px solid #d3b46499; border-radius: 999px; color: #f4db99; font-weight: 700; }
+.pathfinder { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .55rem; min-height: 48px; margin-top: 2rem; padding: .6rem 1rem; border: 1px solid var(--c-site); border-radius: 999px; color: #e8f5e9; font-weight: 700; }
 .pathfinder span:nth-child(1) { color: #c7c6bc; font-size: .82rem; font-weight: 400; }
 .section { max-width: 1150px; margin: auto; padding: 6rem 1.5rem; border-top: 1px solid #ffffff20; }
 .sectionLabel { margin-bottom: 1.2rem; color: #a5b9be; font-size: .73rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }

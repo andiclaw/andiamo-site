@@ -43,7 +43,7 @@ export const ecosystemApps: EcosystemApp[] = [
     href: resolveHref('ACADEMY', 'https://academy.andiamo.tech', 3006),
     port: 3006,
     icon: 'A',
-    accentColor: '#6330FF',
+    accentColor: '#3B82D6',
     status: 'active',
   },
   {
@@ -55,7 +55,7 @@ export const ecosystemApps: EcosystemApp[] = [
     href: resolveHref('VELOCITY', 'https://velocity.andiamo.tech', 3003),
     port: 3003,
     icon: 'V',
-    accentColor: '#22D3EE',
+    accentColor: '#00D4FF',
     status: 'active',
   },
   {
@@ -68,7 +68,7 @@ export const ecosystemApps: EcosystemApp[] = [
     href: resolveHref('ANDIAMO', 'https://rides.andiamo.tech', 3007),
     port: 3007,
     icon: 'R',
-    accentColor: '#22C55E',
+    accentColor: '#12C04C',
     status: 'active',
   },
 ];
