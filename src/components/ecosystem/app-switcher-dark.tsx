@@ -130,7 +130,7 @@ export default function AppSwitcherDark() {
               boxShadow: '0 22px 50px rgba(0,0,0,0.55)',
               overflow: 'hidden',
               position: 'absolute',
-              right: 0,
+              left: 0,
               top: 'calc(100% + 8px)',
               width: 288,
               zIndex: 50,

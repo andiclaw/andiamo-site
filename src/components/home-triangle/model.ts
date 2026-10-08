@@ -32,12 +32,9 @@ export const CAPTURE_SLOTS: ReadonlyArray<{ key: CaptureKey; name: string; statu
   { key: 'pathfinder', name: PATHFINDER.name, status: 'NEEDS_EVIDENCE' },
 ];
 
-export function touchAction(armed: TriangleKey | null, key: TriangleKey): 'reveal' | 'open' {
-  return armed === key ? 'open' : 'reveal';
-}
-
-export function autoEnter(visited: boolean, reducedMotion: boolean): boolean {
-  return visited || reducedMotion;
+/** Click or tap on a tile: open it, close it if it is already open, or move to it from another tile. */
+export function tileToggle(open: TriangleKey | null, key: TriangleKey): TriangleKey | null {
+  return open === key ? null : key;
 }
 
 export function allowDepth(reducedMotion: boolean, hasWebGL: boolean): boolean {

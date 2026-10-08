@@ -16,11 +16,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b hairline bg-[#04070e]/85 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
-        {/* Corporate chrome: the Andiamo Tech wordmark stays the company mark */}
-        <Link href="/" className="focusable flex items-center gap-2.5 flex-shrink-0" aria-label="Andiamo Tech home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/wordmark.svg" alt="Andiamo Tech" width={150} height={32} className="h-7 w-auto" />
-        </Link>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          {/* Ecosystem launcher TOP LEFT, mirroring the apps (SITE-HOME-FEEDBACK-1008-001 item 7) */}
+          <AppSwitcherDark />
+          {/* Corporate chrome: the Andiamo Tech wordmark stays the company mark */}
+          <Link href="/" className="focusable flex items-center gap-2.5" aria-label="Andiamo Tech home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/wordmark.svg" alt="Andiamo Tech" width={150} height={32} className="h-7 w-auto" />
+          </Link>
+        </div>
 
         <nav className="flex items-center gap-1">
           {NAV.map((item) => (
@@ -39,10 +43,6 @@ export function Header() {
           >
             Report
           </Link>
-          {/* Ecosystem launcher: jump to Academy / Velocity / Andiamo */}
-          <div className="ml-1">
-            <AppSwitcherDark />
-          </div>
         </nav>
       </div>
     </header>

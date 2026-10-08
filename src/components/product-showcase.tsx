@@ -18,7 +18,7 @@ export function ProductShowcase() {
         const statusColor = STATUS_COLOR[p.status];
         return (
           <Reveal key={p.key} as="article">
-            <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+            <div id={p.key} className="relative grid lg:grid-cols-2 gap-8 lg:gap-14 items-center scroll-mt-24">
               {/* ambient accent glow */}
               <div
                 className="absolute -z-10 w-[500px] h-[500px] rounded-full blur-[120px] opacity-[0.12] pointer-events-none"

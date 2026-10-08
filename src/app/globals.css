@@ -26,24 +26,10 @@ body {
   font-feature-settings: 'cv11', 'ss01';
 }
 
-/* The homepage entry is the only visible surface until the visitor enters.
-   Existing global navigation returns immediately afterward. */
-body:has([data-home-entry="open"]) > header,
-body:has([data-home-entry="open"]) > footer,
-body:has([data-home-entry="open"]) > .skip-link {
-  visibility: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body:has([data-home-entry="open"]) > header,
-  body:has([data-home-entry="open"]) > footer,
-  body:has([data-home-entry="open"]) > .skip-link { visibility: visible; }
-}
-
 @media (max-width: 370px) {
-  body:has([data-home-entry]) > header img[src="/brand/wordmark.svg"] { max-width: 110px; }
-  body:has([data-home-entry]) > header nav > a[href="/report"] { display: none; }
-  body:has([data-home-entry]) > footer a[href^="mailto:"] { overflow-wrap: anywhere; font-size: .75rem; }
+  body:has([data-home]) > header img[src="/brand/wordmark.svg"] { max-width: 110px; }
+  body:has([data-home]) > header nav > a[href="/report"] { display: none; }
+  body:has([data-home]) > footer a[href^="mailto:"] { overflow-wrap: anywhere; font-size: .75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
