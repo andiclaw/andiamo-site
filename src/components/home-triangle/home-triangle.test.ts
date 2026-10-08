@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { HomeExperience } from './home-experience';
-import { CAPTURE_SLOTS, PATHFINDER, TRIANGLE_PRODUCTS, allowDepth, autoEnter, touchAction } from './model';
+import { CAPTURE_SLOTS, PATHFINDER, TRIANGLE_PRODUCTS, allowDepth } from './model';
 
 const page = () => readFileSync('src/app/page.tsx', 'utf8');
 
@@ -15,17 +15,16 @@ describe('SITE-HOME-TRIANGLE-REDESIGN-001 homepage contract', () => {
     expect(page()).not.toContain('<JourneyHero');
   });
 
-  it('server-renders Enter first, three named corners, the lower Pathfinder link, and a usable no-script fallback', () => {
+  // SITE-HOME-FEEDBACK-1008-001 (Brendan 10-08): no Enter gate and no shared detail box; each tile owns its panel
+  // (src/site-feedback-1008.test.ts pins the new behaviour).
+  it('server-renders the three named corners, the lower Pathfinder link, and no entry gate', () => {
     const html = renderToStaticMarkup(createElement(HomeExperience, null, createElement('p', null, 'After hero')));
-    expect(html).toContain('data-home-entry="open"');
-    expect(html).toContain('Enter');
-    expect(html).toContain('Skip intro');
+    expect(html).not.toContain('data-entry-gate');
     expect(html).toContain('data-home-content');
-    expect(html).toContain('visibility:visible!important');
     expect((html.match(/data-node-key=/g) ?? [])).toHaveLength(3);
     for (const product of TRIANGLE_PRODUCTS) {
       expect(html).toContain(`data-node-key="${product.key}"`);
-      expect(html).toContain(`aria-controls="triangle-detail"`);
+      expect(html).toContain(`aria-controls="tile-panel-${product.key}"`);
       expect(html).toContain(product.name);
     }
     expect(html.indexOf(PATHFINDER.href)).toBeGreaterThan(html.indexOf('data-node-key="andiamo"'));
@@ -39,16 +38,7 @@ describe('SITE-HOME-TRIANGLE-REDESIGN-001 homepage contract', () => {
     expect(PATHFINDER.href).not.toBe(TRIANGLE_PRODUCTS[0].href);
   });
 
-  it('reveals on first touch, opens only on the same second touch, and resets on another product', () => {
-    expect(touchAction(null, 'academy')).toBe('reveal');
-    expect(touchAction('academy', 'academy')).toBe('open');
-    expect(touchAction('academy', 'velocity')).toBe('reveal');
-  });
-
-  it('skips entry only for a returning or reduced-motion visitor and gates depth on WebGL', () => {
-    expect(autoEnter(false, false)).toBe(false);
-    expect(autoEnter(true, false)).toBe(true);
-    expect(autoEnter(false, true)).toBe(true);
+  it('gates depth on WebGL and reduced motion', () => {
     expect(allowDepth(false, true)).toBe(true);
     expect(allowDepth(false, false)).toBe(false);
     expect(allowDepth(true, true)).toBe(false);
@@ -76,14 +66,8 @@ describe('SITE-HOME-TRIANGLE-REDESIGN-001 homepage contract', () => {
     }
   });
 
-  it('keeps the entry exclusive while open and the no-JS/reduced-motion route readable', () => {
-    const css = readFileSync('src/components/home-triangle/home-triangle.module.css', 'utf8');
-    const globalCss = readFileSync('src/app/globals.css', 'utf8');
-    expect(css).toMatch(/\.content\[data-locked="true"\]\s*\{\s*visibility:\s*hidden/);
-    expect(css).toMatch(/prefers-reduced-motion:\s*reduce/);
-    expect(css).toMatch(/\.entry\s*\{\s*display:\s*none/);
-    expect(globalCss).toContain('body:has([data-home-entry="open"]) > header');
-    expect(globalCss).toContain('body:has([data-home-entry="open"]) > footer');
+  it('keeps a reduced-motion route', () => {
+    expect(readFileSync('src/components/home-triangle/home-triangle.module.css', 'utf8')).toMatch(/prefers-reduced-motion:\s*reduce/);
   });
 
   it('holds each image slot and keeps the inventoried legacy bytes unapproved', () => {
