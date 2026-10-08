@@ -14,7 +14,7 @@
 .nodeWrap[data-node-key="andiamo"] { left: 91%; top: 87%; }
 .tile { border: 1px solid color-mix(in srgb, var(--accent) 56%, white 12%); border-radius: 24px; background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 18%, #071321), #07101b 60%); box-shadow: 0 18px 45px #0009, 0 0 35px color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; transition: box-shadow .32s ease, border-color .32s ease; }
 .node { width: 100%; min-height: 110px; display: grid; align-content: center; gap: .3rem; padding: 1rem; border: 0; background: transparent; color: #f7fffd; text-align: left; transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease; }
-.nodeNumber { color: var(--accent); font-size: .72rem; letter-spacing: .16em; }
+.nodeNumber { color: color-mix(in srgb, var(--accent) 72%, white); font-size: .72rem; letter-spacing: .16em; }
 .nodeName { font-size: clamp(1rem, 2vw, 1.6rem); font-weight: 750; }
 .nodeWrap[data-open="true"] .tile { border-color: var(--accent); box-shadow: 0 26px 55px #000b, 0 0 55px color-mix(in srgb, var(--accent) 35%, transparent); }
 /* Each tile expands its OWN box: the panel row grows from 0fr to 1fr (SITE-HOME-FEEDBACK-1008-001 item 2). */
