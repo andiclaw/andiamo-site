@@ -57,7 +57,16 @@ const nextConfig = {
       "form-action 'self'",
       "frame-ancestors 'none'",
       'upgrade-insecure-requests',
-    ].join('; ');
+    ];
+
+    // PREVIEW ONLY (lead #9452): SITE_PREVIEW_HTTP=1, set at `next build` for the local pm2 preview served over plain
+    // http on a LAN IP. There, upgrade-insecure-requests makes the browser rewrite every /_next asset to https on an
+    // address with no TLS, so the page renders without CSS or JS; HSTS is dropped with it (browsers ignore it over http
+    // anyway). Exactly '1' or nothing. No Dockerfile, workflow or infra file may set it (src/preview-http-headers.test.ts
+    // fails if one does), and with it unset the headers are byte-identical to production.
+    const previewHttp = process.env.SITE_PREVIEW_HTTP === '1';
+    const csp = (previewHttp ? CSP.filter((d) => d !== 'upgrade-insecure-requests') : CSP).join('; ');
+    const transport = previewHttp ? [] : [{ key: 'Strict-Transport-Security', value: HSTS }];
 
     return [
       {
@@ -67,8 +76,8 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'Strict-Transport-Security', value: HSTS },
-          { key: 'Content-Security-Policy', value: CSP },
+          ...transport,
+          { key: 'Content-Security-Policy', value: csp },
         ],
       },
     ];
