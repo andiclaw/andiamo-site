@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ app: string }> }) {
   const { app } = await params;
   const product = PRODUCTS.find((p) => p.key === app);
-  return { title: product ? `${product.name}, Andiamo Tech` : 'Andiamo Tech' };
+  return { title: product ? product.name : 'Products' };
 }
 
 export default async function AppPage({ params }: { params: Promise<{ app: string }> }) {
