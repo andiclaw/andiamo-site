@@ -21,6 +21,7 @@
 .tilePanel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .32s ease, visibility 0s linear .32s; }
 .tilePanelInner { min-height: 0; overflow: hidden; padding: 0 1rem; text-align: left; }
 .tilePanelInner p { margin: 0 0 .35rem; color: #d5e2e6; font-size: .86rem; line-height: 1.45; }
+.tilePanelInner a + a { margin-left: .9rem; }
 .tilePanelInner a { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: .55rem; color: var(--c-site); font-size: .9rem; font-weight: 650; text-decoration: underline; text-underline-offset: .25em; }
 .nodeWrap[data-open="true"] .tilePanel { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .32s ease, visibility 0s; }
 @media (hover: hover) {

@@ -73,6 +73,7 @@ export function HomeExperience({ children }: { children: ReactNode }) {
                         <div className={styles.tilePanelInner}>
                           <p>{product.description}</p>
                           <a href={product.href}>Open {product.name} <span aria-hidden="true">↗</span></a>
+                          <a href={`/products/${product.key}`}>More about {product.name}</a>
                         </div>
                       </div>
                     </div>

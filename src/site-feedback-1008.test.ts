@@ -59,10 +59,11 @@ describe('3: a smaller hero line', () => {
 });
 
 describe('5: Pathfinder is not a dead link', () => {
-  it('points at its section on this site, which exists', () => {
-    expect(PATHFINDER.href).toBe('/products#pathfinder');
+  // Part B (#9530) gave Pathfinder its own page, so the link now goes there (src/site-app-pages-1008.test.ts).
+  it('points at a page on this site, which exists', () => {
+    expect(PATHFINDER.href).toBe('/products/pathfinder');
     expect(readFileSync('src/components/product-showcase.tsx', 'utf8')).toMatch(/id=\{p\.key\}/);
-    expect(html()).toContain('href="/products#pathfinder"');
+    expect(html()).toContain('href="/products/pathfinder"');
   });
 });
 

@@ -127,9 +127,9 @@ export const PRODUCTS: Product[] = [
       'Smart tagger, folder-size heatmap, file diff/compare',
       'Detects active Claude Code / Codex / OpenClaw / MCP sessions',
     ],
-    // SITE-HOME-FEEDBACK-1008-001 item 5: github.com/andiclaw/pathfinder answered 404 (2026-10-08); there is no public
-    // download page yet, so the link goes to Pathfinder's section on this site.
-    url: '/products#pathfinder',
+    // SITE-HOME-FEEDBACK-1008-001: github.com/andiclaw/pathfinder answered 404 (2026-10-08) and there is no public
+    // download yet (1.3.7 is unsigned and unpublished), so the link goes to Pathfinder's own page on this site.
+    url: '/products/pathfinder',
     status: 'beta',
     accent: '#0EA5E9', // Explorer (Pathfinder) src/index.css --pf-accent-500
     licenseLine: 'Open source · MIT',
