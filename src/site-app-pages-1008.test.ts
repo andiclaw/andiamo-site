@@ -84,6 +84,6 @@ describe('the page title', () => {
   it('is the app name alone; the layout adds the company', () => {
     const route = readFileSync('src/app/products/[app]/page.tsx', 'utf8');
     expect(route).not.toMatch(/\$\{product\.name\}, Andiamo Tech/);
-    expect(readFileSync('src/app/layout.tsx', 'utf8')).toMatch(/template:\s*'%s · Andiamo Tech'/);
+    expect(readFileSync('src/app/layout.tsx', 'utf8')).toMatch(/template:\s*`%s · \$\{COMPANY\.shortName\}`/);
   });
 });
