@@ -77,3 +77,13 @@ describe('the home links into the pages', () => {
     expect(PRODUCTS.find((p) => p.key === 'pathfinder')!.url).toBe('/products/pathfinder');
   });
 });
+
+// The layout's title template already appends " · Andiamo Tech"; the page title is just the app name (seen in the
+// browser on 2026-10-08: "Velocity, Andiamo Tech · Andiamo Tech").
+describe('the page title', () => {
+  it('is the app name alone; the layout adds the company', () => {
+    const route = readFileSync('src/app/products/[app]/page.tsx', 'utf8');
+    expect(route).not.toMatch(/\$\{product\.name\}, Andiamo Tech/);
+    expect(readFileSync('src/app/layout.tsx', 'utf8')).toMatch(/template:\s*'%s · Andiamo Tech'/);
+  });
+});
