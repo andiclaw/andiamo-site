@@ -33,7 +33,7 @@ export const APP_PAGES: AppPage[] = [
       { text: 'Academy sets each lesson up for you to teach.', source: `${ACA}: hero step "Teach the lesson / Academy sets it up"` },
       { text: "Progress is carried into your child's record, and the record is yours.", source: `${ACA}: list item "Progress carried into the record"; heading "Your child's record, owned by you."` },
       { text: "Faith lessons follow your family's tradition, or take a secular path, set per child and changeable later.", source: `${ACA}: headings "Your family's tradition", "Or a secular path", "Per child, changeable"` },
-      { text: 'Andaro adds a story layer over the schoolwork.', source: `${ACA}: heading "A story layer over the schoolwork."` },
+      { text: 'Andaro, a story layer over the schoolwork, is in household beta.', source: `${ACA}: heading "A story layer over the schoolwork."; R2 #9558 PROD read: School.betaAndaro true for 2 of 10 households` },
     ],
   },
   {
@@ -50,7 +50,7 @@ export const APP_PAGES: AppPage[] = [
       { text: 'The same story is clustered together, and micro trends roll up to macro ones.', source: `${VEL}: headings "Same-story clustering", "Micro rolls up to macro"` },
       { text: 'Declare your tech stack and see the matching vulnerabilities from NVD and GitHub advisories, matched by version, on your stack watch and over MCP for your agents.', source: `${VEL}: steps 1 to 3 and list items "NVD + GHSA feeds", "Version-aware matching", "MCP access"` },
       { text: 'Email, push and webhook alerts are not switched on yet.', source: `${VEL}: step 3 "Email, push and webhook alerts are not switched on yet."` },
-      { text: 'Threat-actor intelligence on 200+ APT groups, with confidence-scored links.', source: `${VEL}: list items "200+ APT groups", "Confidence-scored links"` },
+      { text: 'Threat-actor intelligence on 200+ APT groups.', source: `${VEL}: list item "200+ APT groups"; R2 #9558: PROD holds 1,131 actors; actor links are not yet populated, so that claim is dropped` },
     ],
   },
   {
