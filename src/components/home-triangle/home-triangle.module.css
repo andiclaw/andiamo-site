@@ -4,7 +4,7 @@
 /* SITE-HOME-FEEDBACK-1008-002 item 3: ONE line, and nothing above it. The size follows the width so it fits a phone. */
 .heroHeading h1 { margin: .7rem auto .5rem; color: #f5fffb; font-size: clamp(1rem, 4.4vw, 2.75rem); line-height: 1.1; font-weight: 750; letter-spacing: -.04em; white-space: nowrap; }
 .heroHeading h1:focus { outline: none; }
-.triangle { position: relative; max-width: 900px; height: 320px; margin: 2.5rem auto 0; perspective: 1000px; }
+.triangle { position: relative; max-width: 900px; height: 320px; margin: 5rem auto 0; perspective: 1000px; }
 .lines { position: absolute; inset: 0; width: 100%; height: 100%; color: #80c9bf7a; filter: drop-shadow(0 0 10px #2abfaf77); }
 .nodes { list-style: none; padding: 0; margin: 0; }
 /* Item 1: each bubble is a CIRCLE carrying its live status icon; the 01/02/03 numbers are gone. */
@@ -69,7 +69,7 @@
 .capturePending { display: grid; place-items: center; min-height: 150px; margin-top: 1rem; border: 1px dashed #87a3a780; border-radius: 12px; color: #b7c7c8; text-align: center; font-size: .9rem; }
 @media (max-width: 700px) {
   .hero { padding: 2.5rem 1rem 3rem; }
-  .triangle { height: 330px; margin-top: 2.5rem; }
+  .triangle { height: 330px; margin-top: 3.25rem; }
   .nodeWrap { width: 7rem; }
   .nodeWrap[data-node-key="velocity"] { left: 22%; top: 80%; }
   .nodeWrap[data-node-key="andiamo"] { left: 78%; top: 80%; }
