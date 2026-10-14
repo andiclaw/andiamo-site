@@ -19,21 +19,24 @@ const css = () => readFileSync('src/components/home-triangle/home-triangle.modul
 describe('1 + 4: straight onto the app picker', () => {
   it('no Enter gate, no Skip intro, no locked content; the subtitle is gone', () => {
     const h = html();
-    for (const gone of ['data-entry-gate', 'Skip intro', '>Enter', 'data-locked="true"', 'Three connected products', 'Choose one to learn more']) expect(h, gone).not.toContain(gone);
+    for (const gone of ['data-entry-gate', 'Skip intro', 'data-locked="true"', 'Three connected products', 'Choose one to learn more']) expect(h, gone).not.toContain(gone);
+    // Round 3 (SITE-HOME-FEEDBACK-1008-002 item 4) asked for an "Enter <app>" button in each panel; the only Enter left
+    // is that link, never a gate in front of the page.
+    expect(h.match(/>Enter /g)?.length).toBe(h.match(/data-enter-app=/g)?.length);
     expect(h).toContain('id="home-heading"');
     expect(readFileSync('src/app/globals.css', 'utf8')).not.toContain('data-home-entry');
   });
 });
 
 describe('2: each tile expands its own box', () => {
-  it('every tile owns a panel (its description and a link to its site); there is no shared detail box', () => {
+  it('every tile owns a panel (its one-line about and a link to its site); there is no shared detail box', () => {
     const h = html();
     expect(h).not.toContain('triangle-detail');
     for (const p of TRIANGLE_PRODUCTS) {
       const li = h.slice(h.indexOf(`data-node-key="${p.key}"`), h.indexOf('</li>', h.indexOf(`data-node-key="${p.key}"`)));
       expect(li, p.key).toContain(`aria-controls="tile-panel-${p.key}"`);
       expect(li, p.key).toContain(`id="tile-panel-${p.key}"`);
-      expect(li, p.key).toContain(p.description);
+      expect(li, p.key).toContain(p.about);
       expect(li, p.key).toContain(`href="${p.href}"`);
     }
   });

@@ -39,7 +39,9 @@ export const ecosystemApps: EcosystemApp[] = [
   {
     key: 'academy',
     title: 'Academy',
-    tagline: 'From Sparks to Stars',
+    // SITE-HOME-FEEDBACK-1008-002 item 5: the locked Academy motto, as the Academy landing page shows it
+    // (academy origin/dev src/components/landing/LandingV3.tsx; DECISIONS, Brendan: "I wanted this").
+    tagline: 'A world of learning. A story of their own.',
     href: resolveHref('ACADEMY', 'https://academy.andiamo.tech', 3006),
     port: 3006,
     icon: 'A',

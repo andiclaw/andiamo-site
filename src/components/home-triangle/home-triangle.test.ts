@@ -4,7 +4,8 @@ import { createHash } from 'node:crypto';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { HomeExperience } from './home-experience';
-import { CAPTURE_SLOTS, PATHFINDER, TRIANGLE_PRODUCTS, allowDepth } from './model';
+import { PATHFINDER, TRIANGLE_PRODUCTS, allowDepth } from './model';
+import { APP_PAGES } from '../../lib/app-pages';
 
 const page = () => readFileSync('src/app/page.tsx', 'utf8');
 
@@ -44,12 +45,12 @@ describe('SITE-HOME-TRIANGLE-REDESIGN-001 homepage contract', () => {
     expect(allowDepth(true, true)).toBe(false);
   });
 
+  // SITE-HOME-FEEDBACK-1008-002 item 6 (Brendan 10-08) supersedes the four NEEDS_EVIDENCE placeholders: the closer look
+  // shows the same real captures as the app pages, each recorded in the custody manifest below.
   it('does not promote unverified legacy art or image files to real UI captures', () => {
-    expect(CAPTURE_SLOTS).toHaveLength(4);
-    expect(CAPTURE_SLOTS.every(slot => slot.status === 'NEEDS_EVIDENCE')).toBe(true);
     expect(page()).not.toContain('/brand/captures/');
     expect(page()).not.toContain('<ProductCapture');
-    expect(page()).toContain('These placeholders are not screenshots.');
+    expect(page()).toContain('APP_PAGES');
   });
 
   it('takes PBC and mission text from the named company and brand sources', () => {
@@ -70,10 +71,11 @@ describe('SITE-HOME-TRIANGLE-REDESIGN-001 homepage contract', () => {
     expect(readFileSync('src/components/home-triangle/home-triangle.module.css', 'utf8')).toMatch(/prefers-reduced-motion:\s*reduce/);
   });
 
-  it('holds each image slot and keeps the inventoried legacy bytes unapproved', () => {
+  it('records each capture the closer look shows, and keeps the inventoried legacy bytes unapproved', () => {
     const manifest = readFileSync('docs/SITE-HOME-TRIANGLE-REDESIGN-001-capture-custody.md', 'utf8');
-    for (const slot of CAPTURE_SLOTS) {
-      expect(manifest).toContain(`| ${slot.name} | NEEDS_EVIDENCE |`);
+    for (const p of APP_PAGES.filter(item => item.screenshot)) {
+      const sha = createHash('sha256').update(readFileSync(`public${p.screenshot!.src}`)).digest('hex');
+      expect(manifest).toContain(`| \`public${p.screenshot!.src}\` | \`${sha}\` |`);
     }
     for (const file of ['academy.jpg', 'velocity.jpg', 'andiamo.jpg']) {
       const bytes = readFileSync(`public/brand/captures/${file}`);

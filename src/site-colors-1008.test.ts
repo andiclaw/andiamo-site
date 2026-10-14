@@ -70,10 +70,11 @@ describe('the site chrome takes the wordmark green', () => {
 });
 
 // Measured 2026-10-08: Academy #3B82D6 on its accent-tinted tile top (#102742) is 3.85:1, under AA 4.5:1 for the small
-// "01" number. The number text lightens the app's own token toward white (same hue), which clears AA for all four.
-describe('AA contrast for the small tile numbers', () => {
-  it('the number text is the accent lightened toward white, never the raw accent', () => {
+// "01" number. Round 3 (SITE-HOME-FEEDBACK-1008-002 item 1) removed the numbers; the circle text stays near-white.
+describe('AA contrast for the circle text', () => {
+  it('no number text remains, and the name is near-white, never the raw accent', () => {
     const css = readFileSync('src/components/home-triangle/home-triangle.module.css', 'utf8');
-    expect(css).toMatch(/\.nodeNumber \{[^}]*color:\s*color-mix\(in srgb, var\(--accent\) 7\d%, white\)/);
+    expect(css).not.toContain('.nodeNumber');
+    expect(css).toMatch(/\.node \{[^}]*color:\s*#f7fffd/);
   });
 });

@@ -18,3 +18,15 @@ The existing `public/brand/captures/*.jpg` files remain unchanged and are **not*
 | `public/brand/captures/andiamo.jpg` | `069f714160c2dd49311d9a92e78e8f488a827d282b431543090f1d6ad426eb3d` |
 
 To replace a slot, a separate capture packet must identify the exact product repository commit and build, route and viewport, fixture identity, privacy review (especially Academy), final file bytes/hash and reviewer acceptance. No product account, customer data, live capture, generation or image mutation was used for this draft.
+
+## 2026-10-14: the closer look shows the app-page captures (SITE-HOME-FEEDBACK-1008-002 item 6)
+
+Brendan asked on 2026-10-08 (round 3, item 6) for "A closer look" to use the updated screenshots. The home now shows the same three captures the app pages have used since SITE-HOME-FEEDBACK-1008-001 Part B. Each is a capture of the app's own PUBLIC home page (no account, no customer data), at 1440 by 900, taken 2026-10-08, with its source in `src/lib/app-pages.ts`. Academy's page shows two sample children from its own public marketing page, not a family's data. Pathfinder has no capture: release 1.3.7 is unsigned and unpublished, and its card says so.
+
+| Capture | SHA-256 |
+|---|---|
+| `public/products/academy/home-1440.png` | `d1e495c2f8508b7e0caecc268b45b20f471aa007cda60c6980b13df50e16e243` |
+| `public/products/velocity/home-1440.png` | `9e582324909d75d5b2a3e9e9a3a9d0235bddef9e5ae7aa38a7f3ba14d8fbec2c` |
+| `public/products/andiamo/home-1440.png` | `455b649c0a3486f50c549937d0ebd4e04676823da63c81b0e0c0aabea372d928` |
+
+The legacy `public/brand/captures/*.jpg` files above remain unapproved and unused. Reviewer acceptance of these three captures on the home: pending (R1 in Chrome, R2 on the claims).
