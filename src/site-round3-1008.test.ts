@@ -85,6 +85,7 @@ describe('(4) live status, read from the real endpoints, never hardcoded', () =>
     // A 200 from something that is not the app (a parked page, a wrong host) proves nothing.
     expect(classify('academy', r(200, { service: 'other', state: 'ok' }), false)).toBe('unknown');
     expect(classify('velocity', r(200, '<html>'), false)).toBe('unknown');
+    expect(classify('velocity', r(200, { status: 'starting', service: 'velocity' }), false)).toBe('unknown');
     expect(classify('academy', r(200, { service: 'academy', state: 'mystery' }), false)).toBe('unknown');
     expect(classify('academy', r(404, {}), false)).toBe('unknown');
     expect(classify('academy', { ok: false }, false)).toBe('unknown');
