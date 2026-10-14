@@ -87,3 +87,19 @@ describe('the page title', () => {
     expect(readFileSync('src/app/layout.tsx', 'utf8')).toMatch(/template:\s*`%s · \$\{COMPANY\.shortName\}`/);
   });
 });
+
+// R1 #9557 (item 5) and R2 #9558 on 9d5fbed: the footer still linked the dead github.com/andiclaw/pathfinder (404);
+// Academy's Andaro line must say household beta (PROD: 2 of 10 households); Velocity drops "confidence-scored links"
+// (PROD: 3 actor links, 0 actor-to-CVE). Written to FAIL on 9d5fbed.
+describe('R1 + R2 fixes on the app pages round', () => {
+  it('no link anywhere in the site source points at the dead Pathfinder GitHub page; the footer goes to its page', () => {
+    expect(readFileSync('src/components/footer.tsx', 'utf8')).not.toContain('github.com/andiclaw/pathfinder');
+    expect(readFileSync('src/components/footer.tsx', 'utf8')).toContain('/products/pathfinder');
+  });
+  it('the two claim lines say only what PROD shows', async () => {
+    const { APP_PAGES } = await pages();
+    const lines = (k: string) => APP_PAGES.find((p) => p.key === k)!.features.map((f) => f.text);
+    expect(lines('academy')).toContain('Andaro, a story layer over the schoolwork, is in household beta.');
+    expect(lines('velocity').join(' ')).not.toMatch(/confidence-scored/i);
+  });
+});
