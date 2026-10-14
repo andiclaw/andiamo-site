@@ -141,6 +141,33 @@ describe('(4) the status route reads only the three fixed endpoints', () => {
   });
 });
 
+// Seen on the :3019 preview at 4c176a3: the first read after a slow start timed out, and the route held "unknown" for
+// all three apps for its full 60 seconds while every app was answering. A miss must not be held as long as an answer.
+describe('(4) a miss is retried soon, an answer is held a minute', () => {
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.resetModules(); });
+  it('after a timed-out probe, a read 15 seconds later probes again; a full answer is reused for 60 seconds', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-10-14T07:00:00Z'));
+    let fail = true, calls = 0;
+    vi.stubGlobal('fetch', vi.fn(async (u: string) => {
+      calls++;
+      if (fail) throw new Error('timeout');
+      const body = String(u).includes('velocity') ? { status: 'ok', service: 'velocity' } : String(u).includes('rides') ? { app: 'andiamo', state: 'ok' } : { service: 'academy', state: 'ok' };
+      return new Response(JSON.stringify(body), { status: 200 });
+    }));
+    const { GET } = await import(/* @vite-ignore */ './app/api/status/route') as { GET: (r: Request) => Promise<Response> };
+    const read = async () => ((await (await GET(new Request('http://localhost/api/status'))).json()) as { apps: Record<string, string> }).apps;
+    expect(Object.values(await read())).toEqual(['unknown', 'unknown', 'unknown']);
+    fail = false;
+    vi.setSystemTime(new Date('2026-10-14T07:00:15Z'));
+    expect(Object.values(await read())).toEqual(['active', 'active', 'active']);
+    expect(calls).toBe(6);
+    vi.setSystemTime(new Date('2026-10-14T07:00:55Z'));
+    await read();
+    expect(calls).toBe(6);
+  });
+});
+
 describe('(4) an Enter button and a one-line about per app', () => {
   it('each panel has "Enter <app>" to the app and the app summary from its page', () => {
     const html = home();
