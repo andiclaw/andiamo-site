@@ -57,6 +57,13 @@ describe('(3) one-line top header, no "Andiamo Tech" above it', () => {
   });
 });
 
+// Seen in Chrome at 1440 on 3c6693c (home-1440-andiamo-open.png): the Academy circle rose into the one-line heading.
+describe('(3) the Academy circle clears the heading', () => {
+  it('the triangle sits at least 4.5rem below the heading on wide screens', () => {
+    expect(Number(rule('.triangle').match(/margin:\s*([\d.]+)rem auto 0/)?.[1])).toBeGreaterThanOrEqual(4.5);
+  });
+});
+
 describe('(4) live status, read from the real endpoints, never hardcoded', () => {
   it('the labels are the five Brendan named, plus a neutral one while the check runs', async () => {
     const { STATUS_LABEL } = await lib();
